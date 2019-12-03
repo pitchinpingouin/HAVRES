@@ -30,7 +30,6 @@ ScriptsOnlyBuild:
     - UnityEditor.Tilemaps.TileDragAndDropManager
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
-    - UnityEditor.TestTools.TestRunner.TestListCacheData
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.StandaloneInputModule
@@ -38,7 +37,6 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
     com.unity.multiplayer-hlapi.Runtime.dll:
-    - UnityEngine.Networking.NetworkCallbacks
     - UnityEngine.Networking.NetworkIdentity
   sceneClasses:
     Assets/Scenes/TestDeplacement.unity:
@@ -119,23 +117,23 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11456}
     - Class: 114
-      Script: {instanceID: 11782}
+      Script: {instanceID: 11648}
     - Class: 114
-      Script: {instanceID: 11834}
+      Script: {instanceID: 11784}
     - Class: 114
-      Script: {instanceID: 11886}
+      Script: {instanceID: 11836}
     - Class: 114
-      Script: {instanceID: 12026}
+      Script: {instanceID: 11888}
     - Class: 114
-      Script: {instanceID: 12264}
+      Script: {instanceID: 12028}
     - Class: 114
-      Script: {instanceID: 12322}
+      Script: {instanceID: 12266}
     - Class: 114
-      Script: {instanceID: 12426}
+      Script: {instanceID: 12324}
     - Class: 114
-      Script: {instanceID: 12856}
+      Script: {instanceID: 12428}
     - Class: 114
-      Script: {instanceID: 18308}
+      Script: {instanceID: 12858}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 135
@@ -405,6 +403,18 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: Oculus.Platform.Samples.VrBoardGame
     className: BoardPosition
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: UnityEngine.Advertisements.dll
+    namespaceName: UnityEngine.Advertisements
+    className: CallbackExecutor
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: UnityEngine.Advertisements.dll
+    namespaceName: UnityEngine.Advertisements.Editor
+    className: Placeholder
   - hash:
       serializedVersion: 2
       Hash: 7ab0e790220bdca831fdd886b339039d
@@ -1091,6 +1101,12 @@ ScriptsOnlyBuild:
     className: TeleportOrientationHandler360
   - hash:
       serializedVersion: 2
+      Hash: 865e06cb3fe3a895d55a8853c52bac62
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Graine
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -1635,12 +1651,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: 865e06cb3fe3a895d55a8853c52bac62
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: Graine
   platform: 13
   scenePathNames:
   - Assets/Scenes/TestDeplacement.unity
