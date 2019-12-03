@@ -2,6 +2,7 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
     - CharacterCameraConstraint
+    - Graine
     - ONSPSettings
     - Oculus.Platform.PlatformSettings
     - OvrAvatar
@@ -14,6 +15,7 @@ ScriptsOnlyBuild:
     - OVRCameraRig
     - OVRDebugInfo
     - OVRGazePointer
+    - OVRGrabbable
     - OVRGrabber
     - OVRHeadsetEmulator
     - OVRManager
@@ -36,6 +38,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
     com.unity.multiplayer-hlapi.Runtime.dll:
+    - UnityEngine.Networking.NetworkCallbacks
     - UnityEngine.Networking.NetworkIdentity
   sceneClasses:
     Assets/Scenes/TestDeplacement.unity:
@@ -114,6 +117,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11426}
     - Class: 114
+      Script: {instanceID: 11456}
+    - Class: 114
       Script: {instanceID: 11782}
     - Class: 114
       Script: {instanceID: 11834}
@@ -129,6 +134,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 12426}
     - Class: 114
       Script: {instanceID: 12856}
+    - Class: 114
+      Script: {instanceID: 18308}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 135
@@ -1628,7 +1635,13 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 865e06cb3fe3a895d55a8853c52bac62
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Graine
   platform: 13
   scenePathNames:
   - Assets/Scenes/TestDeplacement.unity
-  playerPath: C:/Users/Tiffany/Documents/ENSIIE/JIN/PFE/Builds/build8.apk
+  playerPath: C:/Users/Tiffany/Documents/ENSIIE/JIN/PFE/Builds/build9.apk
