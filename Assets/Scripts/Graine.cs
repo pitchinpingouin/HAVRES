@@ -27,7 +27,7 @@ public class Graine : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        if(havebeentaken && collision.gameObject.CompareTag("Ground"))
+        if(/*havebeentaken && */collision.gameObject.CompareTag("Ground"))
         {
             this.gameObject.SetActive(false);
             Arbre.transform.position =  new Vector3(this.transform.position.x, this.transform.position.y - 0.2f, this.transform.position.z);
