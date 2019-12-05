@@ -8,7 +8,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/GrabRockScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TestDeplacement.unity
     guid: 9bae5c60939094146ae7b335e420d1a8
+  - enabled: 1
+    path: Assets/Scenes/terrainScene.unity
+    guid: a99e0fdab8c408e40b2d8c14b37f5a66
   m_configObjects: {}
