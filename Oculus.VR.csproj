@@ -101,23 +101,7 @@
      <Compile Include="Assets\Oculus\VR\ThirdParty\openvr_api.cs" />
      <Compile Include="Assets\Oculus\VR\ThirdParty\SimpleJSON.cs" />
      <Compile Include="Assets\Oculus\VR\ThirdParty\SimpleJSONUnity.cs" />
-     <None Include="Assets\Oculus\VR\Resources\OVRMRUnlitTransparent.shader" />
-     <None Include="Assets\Oculus\VR\Resources\OVRMRChromaKey.cginc" />
-     <None Include="Assets\Oculus\VR\LICENSE.txt" />
-     <None Include="Assets\Oculus\VR\Shaders\OVRColorRampAlpha.shader" />
-     <None Include="Assets\Oculus\VR\Resources\Cubemap Blit.shader" />
-     <None Include="Assets\Oculus\VR\NOTICE.txt" />
-     <None Include="Assets\Oculus\VR\Resources\OVRMRUnlit.shader" />
-     <None Include="Assets\Oculus\VR\Shaders\Unlit Crosshair.shader" />
-     <None Include="Assets\Oculus\VR\Resources\Unlit Transparent Color.shader" />
-     <None Include="Assets\Oculus\VR\Resources\OVRMRCameraFrameLit.shader" />
-     <None Include="Assets\Oculus\VR\Resources\Underlay Transparent Occluder.shader" />
-     <None Include="Assets\Oculus\VR\Resources\Texture2D Blit.shader" />
-     <None Include="Assets\Oculus\VR\Resources\OVRMRCameraFrame.shader" />
      <None Include="Assets\Oculus\VR\Oculus.VR.asmdef" />
-     <None Include="Assets\Oculus\VR\Resources\OVRMRClipPlane.shader" />
-     <None Include="Assets\Oculus\VR\Resources\Underlay Impostor.shader" />
-     <None Include="Assets\Oculus\VR\Plugins\placeholder.txt" />
  <Reference Include="UnityEditor.UI">
  <HintPath>D:/JIN/GitHavres/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
  </Reference>
@@ -316,9 +300,6 @@
  <Reference Include="UnityEditor.Android.Extensions">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.12f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll</HintPath>
  </Reference>
- <Reference Include="UnityEngine.Advertisements">
- <HintPath>D:/JIN/GitHavres/Library/PackageCache/com.unity.ads@2.0.8/UnityEngine.Advertisements.dll</HintPath>
- </Reference>
  <Reference Include="UnityEditor.Advertisements">
  <HintPath>D:/JIN/GitHavres/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
  </Reference>
@@ -330,9 +311,6 @@
  </Reference>
  <Reference Include="Unity.Analytics.Tracker">
  <HintPath>D:/JIN/GitHavres/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.Purchasing">
- <HintPath>D:/JIN/GitHavres/Library/PackageCache/com.unity.purchasing@2.0.6/UnityEngine.Purchasing.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Purchasing">
  <HintPath>D:/JIN/GitHavres/Library/PackageCache/com.unity.purchasing@2.0.6/Editor/UnityEditor.Purchasing.dll</HintPath>
