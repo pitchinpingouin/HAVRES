@@ -8,6 +8,7 @@ public class Graine : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField]
     private GameObject Arbre;
+    [SerializeField]
     private bool havebeentaken;
   
 
@@ -29,12 +30,14 @@ public class Graine : MonoBehaviour
     {
         if(havebeentaken && collision.gameObject.CompareTag("Ground"))
         {
+            Instantiate(Arbre, transform.position, Quaternion.identity);
             this.gameObject.SetActive(false);
-            Arbre.transform.position = this.transform.position;
-            Arbre.SetActive(true);
+
+            //Arbre.transform.position = this.transform.position;
+            //Arbre.SetActive(true);
         }
 
-      
+
     }
 
 

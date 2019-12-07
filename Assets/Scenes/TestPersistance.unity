@@ -1081,7 +1081,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &1403029890
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1520,6 +1520,7 @@ MonoBehaviour:
     type: 3}
   treePrefabState3: {fileID: 3502390887270510504, guid: e452e250d2703c74aa614ce9ba3f5ed9,
     type: 3}
+  saveInterval: 5
 --- !u!4 &2118705429
 Transform:
   m_ObjectHideFlags: 0
@@ -1601,10 +1602,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 679561185576849936, guid: d66f1b15ae1eaf54fb573f2c91e993f9,
-        type: 3}
-      propertyPath: Arbre
-      value: 
-      objectReference: {fileID: 801893940}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d66f1b15ae1eaf54fb573f2c91e993f9, type: 3}

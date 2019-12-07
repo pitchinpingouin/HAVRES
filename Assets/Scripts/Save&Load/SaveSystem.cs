@@ -8,24 +8,33 @@ using UnityEngine;
 public static class SaveSystem
 {
     public static SaveData Data;
-    private static readonly string path = Path.Combine(Application.persistentDataPath, "saveData.xml");
+    private static readonly string path = "/sdcard/Havres/saveData.xml"; //Path.Combine(Application.persistentDataPath, "/saveData.xml");
 
     public static void Save()
     {
-        var serializer = new XmlSerializer(typeof(SaveData));
-        using (var stream = new FileStream(path, FileMode.Create))
+        using (StreamWriter writer = new StreamWriter(path, false))
         {
-            serializer.Serialize(stream, Data);
+            var serializer = new XmlSerializer(typeof(SaveData));
+            serializer.Serialize(writer, Data);
         }
     }
 
     public static SaveData Load()
     {
-        var serializer = new XmlSerializer(typeof(SaveData));
-        using (var stream = new FileStream(path, FileMode.Open))
+        if (File.Exists(path))
         {
-            Data = serializer.Deserialize(stream) as SaveData;
-            return Data;
+            using (StreamReader reader = new StreamReader(path))
+            {
+                var serializer = new XmlSerializer(typeof(SaveData));
+                Data = serializer.Deserialize(reader) as SaveData;
+            }
         }
+        else
+        {
+            Data = new SaveData();
+            Save(); // just to create a new empty save file
+        }
+
+        return Data;
     }
 }
