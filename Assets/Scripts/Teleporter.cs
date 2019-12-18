@@ -31,6 +31,7 @@ public class Teleporter : MonoBehaviour
                         TeleportMark.SetActive(true);
                     }
                     TeleportMark.transform.position = hit.point;
+                    TeleportMark.transform.position = new Vector3(TeleportMark.transform.position.x, TeleportMark.transform.position.y + 0.1f, TeleportMark.transform.position.z);
                 }
                 else
                 {

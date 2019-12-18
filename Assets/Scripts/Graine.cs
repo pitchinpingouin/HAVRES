@@ -28,7 +28,7 @@ public class Graine : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        if(havebeentaken && collision.gameObject.CompareTag("Ground"))
+        if(/*havebeentaken && */collision.gameObject.CompareTag("Ground"))
         {
             Instantiate(Arbre, transform.position, Quaternion.identity);
             this.gameObject.SetActive(false);
@@ -37,7 +37,7 @@ public class Graine : MonoBehaviour
             //Arbre.SetActive(true);
         }
 
-
+      
     }
 
 
