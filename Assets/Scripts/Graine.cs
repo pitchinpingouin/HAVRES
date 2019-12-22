@@ -30,7 +30,8 @@ public class Graine : MonoBehaviour
     {
         if(/*havebeentaken && */collision.gameObject.CompareTag("Ground"))
         {
-            Instantiate(Arbre, transform.position, Quaternion.identity);
+            Vector3 spawnPos = collision.GetContact(0).point;
+            Instantiate(Arbre, spawnPos, Quaternion.identity);
             this.gameObject.SetActive(false);
 
             //Arbre.transform.position = this.transform.position;

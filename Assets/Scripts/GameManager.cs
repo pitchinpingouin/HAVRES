@@ -18,29 +18,29 @@ public class GameManager : MonoBehaviour
         foreach (TreeData tree in data.Trees)
         {
             GameObject treePrefab;
-            float yOffset;
+            //float yOffset;
             tree.State++;
             switch (tree.State)
             {
                 case 1:
                     treePrefab = treePrefabState1;
-                    yOffset = 0.0f;
+                    //yOffset = 0.0f;
                     break;
                 case 2:
                     treePrefab = treePrefabState2;
-                    yOffset = 0.5f;
+                    //yOffset = 0.5f;
                     break;
                 case 3:
                     treePrefab = treePrefabState3;
-                    yOffset = 1.5f;
+                    //yOffset = 1.5f;
                     break;
                 default:
                     treePrefab = treePrefabState3;
-                    yOffset = 0.0f;
+                    //yOffset = 0.0f;
                     break;
             }
 
-            Instantiate(treePrefab, new Vector3(tree.X, tree.Y + yOffset, tree.Z), Quaternion.identity);
+            Instantiate(treePrefab, new Vector3(tree.X, tree.Y /*+ yOffset*/, tree.Z), Quaternion.identity);
         }
     }
 
@@ -57,5 +57,10 @@ public class GameManager : MonoBehaviour
         Debug.Log("Saving " + SaveSystem.Data.Trees.Count + " trees");
         SaveSystem.Save();
 
-    }    
+    }
+
+    private void OnApplicationQuit()
+    {
+        saveTimer.Dispose();
+    }
 }
