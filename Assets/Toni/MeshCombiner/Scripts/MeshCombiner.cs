@@ -85,7 +85,10 @@ public class MeshCombiner : MonoBehaviour
 		transform.rotation = Quaternion.identity;
 		transform.position = Vector3.zero;
 		transform.localScale = Vector3.one;
-		#endregion Save Transform and reset it temporarily.
+        #endregion Save Transform and reset it temporarily.
+
+        ///Calculate total mass
+        CalculateTotalMassAndAddRgbd();
 
 		#region Combine Meshes into one Mesh:
 		if(!createMultiMaterialMesh)
@@ -117,6 +120,9 @@ public class MeshCombiner : MonoBehaviour
 	{
 		// Get all MeshFilters belongs to this GameObject and its children:
 		MeshFilter[] meshFilters = GetComponentsInChildren<MeshFilter>(combineInactiveChildren);
+
+
+
 
 		// Delete first MeshFilter belongs to this GameObject in meshFiltersToSkip array:
 		meshFiltersToSkip = meshFiltersToSkip.Where((meshFilter) => meshFilter != meshFilters[0]).ToArray();
@@ -297,4 +303,30 @@ public class MeshCombiner : MonoBehaviour
 			}
 		}
 	}
+
+    /// <summary>
+    /// ///
+    /// </summary>
+
+    private void CalculateTotalMassAndAddRgbd()
+    {
+        //On ne prends en compte que les rigibody des enfants ici, le parent n'en a pas encore.
+        Rigidbody[] Rgbds = GetComponentsInChildren<Rigidbody>(combineInactiveChildren);
+        float totalMass = 0.0f;
+        //On additionne toutes les masses dans un seul float
+        for(int i = 0; i < Rgbds.Length - 1; i++)
+        {
+            totalMass += Rgbds[i].mass;
+        }
+        //Add Rigidbody and OVRGrabbable to the gameobject holding this script
+        GameObject gameObject = GetComponent<Transform>().gameObject;
+        gameObject.AddComponent<Rigidbody>();
+        gameObject.GetComponent<Rigidbody>().mass = totalMass;
+        gameObject.AddComponent<OVRGrabbable>();
+
+        return;
+    }
+
+    //TODO: Pouvoir retirer un objet d'un tout.
+    //TODO: Utiliser ce script in-game.
 }
