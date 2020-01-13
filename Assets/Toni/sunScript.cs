@@ -5,6 +5,11 @@ using UnityEngine;
 public class sunScript : MonoBehaviour
 {
     [SerializeField] private float dayDuration;
+    [SerializeField] private AudioSource audio;
+    [SerializeField] private AudioClip dayAudio;
+    [SerializeField] private AudioClip nightAudio;
+    [SerializeField] private bool dayPlaying;
+    [SerializeField] private bool nightPlaying;
     public Transform sunTransform;
 
     private float timeOfDay;
@@ -13,6 +18,9 @@ public class sunScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audio.clip = dayAudio;
+        audio.Play();
+        dayPlaying = true;
         timeOfDay = 0.0f;
     }
 
@@ -27,6 +35,22 @@ public class sunScript : MonoBehaviour
         if(timeOfDay > dayDuration)
         {
             timeOfDay -= dayDuration;
+        }
+
+        if (angleSun > 180 && !nightPlaying)
+        {
+            dayPlaying = false;
+            nightPlaying = true;
+            audio.clip = nightAudio;
+            audio.Play();
+        }
+        else if (angleSun < 150 && !dayPlaying)
+        {
+            
+            dayPlaying = true;
+            nightPlaying = false;
+            audio.clip = dayAudio;
+            audio.Play();
         }
     }
 }
