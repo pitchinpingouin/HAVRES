@@ -89,6 +89,7 @@
     <Compile Include="Assets\Oculus\Spatializer\editor\ONSPPropagationMaterialEditor.cs" />
     <Compile Include="Assets\Oculus\Spatializer\editor\ONSPPropagationSerializationManager.cs" />
     <Compile Include="Assets\Oculus\Spatializer\editor\ONSPReflectionCustomGUI.cs" />
+    <Compile Include="Assets\Toni\MeshCombiner\Editor\MeshCombinerEditor.cs" />
     <Reference Include="UnityEditor.TestRunner">
       <HintPath>D:/UNITY PROJECTS/HAVRES/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
     </Reference>
