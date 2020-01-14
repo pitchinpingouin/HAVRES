@@ -31,7 +31,7 @@ public class Graine : MonoBehaviour
         {
             //this.gameObject.SetActive(false);
             Vector3 contactpt = collision.GetContact(0).point;
-            Instantiate(Arbre, new Vector3(contactpt.x, contactpt.y, contactpt.z), Quaternion.identity);
+            Instantiate(Arbre, new Vector3(contactpt.x, contactpt.y-0.2f, contactpt.z), Quaternion.identity);
             Destroy(gameObject);
             //Arbre.transform.position =  new Vector3(this.transform.position.x, this.transform.position.y - 0.2f, this.transform.position.z);
             //Arbre.SetActive(true);
