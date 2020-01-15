@@ -14,7 +14,6 @@ public class Teleporter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
         canTeleport = true;
         canvaParam.SetActive(false);
     }
@@ -32,8 +31,8 @@ public class Teleporter : MonoBehaviour
             {
                 canvaParam.SetActive(true);
             }
-            
         }
+
         if (canTeleport)
         {
             Ray ray = new Ray(transform.position, transform.forward);
@@ -69,10 +68,6 @@ public class Teleporter : MonoBehaviour
             {
                 TeleportMark.SetActive(false);
             }
-        }
-        
-        
+        } 
     }
-
-  
 }
