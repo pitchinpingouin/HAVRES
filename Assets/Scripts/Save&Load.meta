@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/PlaceHolder/JKT_Art/Animals.meta
+guid: e37c7a54e9de0b94bb8532e2477dc304
+=======
 guid: f536e339b0b3ac1409f3b3ac1efad666
+>>>>>>> d4f3a8827ffa298608eb9ed2bf659157fa5e3b3c:Assets/Scripts/Save&Load.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
