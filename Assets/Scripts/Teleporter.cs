@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Teleporter : MonoBehaviour
 {
-    public GameObject canvaParam;
+    
     public bool canTeleport;
     public GameObject TeleportMark;
     public Transform Player;
@@ -14,25 +14,15 @@ public class Teleporter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         canTeleport = true;
-        canvaParam.SetActive(false);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (OVRInput.GetDown(OVRInput.Button.Three))
-        {
-            if (canvaParam.activeSelf)
-            {
-                canvaParam.SetActive(false);
-            }
-            else
-            {
-                canvaParam.SetActive(true);
-            }
-        }
-
+        
         if (canTeleport)
         {
             Ray ray = new Ray(transform.position, transform.forward);
@@ -68,6 +58,10 @@ public class Teleporter : MonoBehaviour
             {
                 TeleportMark.SetActive(false);
             }
-        } 
+        }
+        
+        
     }
+
+  
 }

@@ -16,6 +16,7 @@ public class FruitPaint : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (!havebeentaken && GetComponent<OVRGrabbable>().isGrabbed)
         {
             havebeentaken = true;
@@ -27,9 +28,14 @@ public class FruitPaint : MonoBehaviour
         if (havebeentaken && collision.gameObject.CompareTag("Ground"))
         {
             Destroy(gameObject);
-            Vector3 contactpt = collision.GetContact(0).point;
-            Instantiate(tache, new Vector3(contactpt.x, contactpt.y + 0.11f, contactpt.z), Quaternion.identity);
-            
+            ContactPoint contact = collision.contacts[0];
+            Quaternion rotation = Quaternion.FromToRotation(Vector3.up, contact.normal);
+            Vector3 contactpt = contact.point;
+            Instantiate(tache, new Vector3(contactpt.x, contactpt.y+0.01f/*+ 0.05f*/, contactpt.z), rotation);
+
+
+           
+
             //tache.transform.position = new Vector3(contactpt.x, contactpt.y + 0.2f, contactpt.z);
             //tache.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
             //tache.SetActive(true);

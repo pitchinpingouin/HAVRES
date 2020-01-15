@@ -23,7 +23,7 @@ public class CatFollowBall : MonoBehaviour
         
         if (havebeentaken && !ball.GetComponent<OVRGrabbable>().isGrabbed)
         {
-            if (dist > 1.5f)
+            if (dist > 1f)
             {
                 GetComponent<Animator>().Play("walk");
                 //Vector3 ballPos = new Vector3(ball.transform.position.x, ball.transform.position.y, ball.transform.position.y);
