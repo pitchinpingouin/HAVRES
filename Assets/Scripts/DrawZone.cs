@@ -83,7 +83,7 @@ public class DrawZone : MonoBehaviour
                             {
                                 //Sélectionne les items dans la zone
                                 centerTransform.position = DrawMark2.transform.position + 0.5f * (DrawMark1.transform.position - DrawMark2.transform.position);
-                                centerTransform.GetComponent<BoxCollider>().size = (0.5f * (DrawMark1.transform.position - DrawMark2.transform.position) + Vector3.up * 0.1f);
+                                centerTransform.localScale = ((DrawMark1.transform.position - DrawMark2.transform.position) + Vector3.up * 10.0f);
                                 centerTransform.gameObject.SetActive(true);
                             }
                         }

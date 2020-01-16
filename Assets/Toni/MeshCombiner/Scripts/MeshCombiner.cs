@@ -322,7 +322,7 @@ public class MeshCombiner : MonoBehaviour
         GameObject gameObject = GetComponent<Transform>().gameObject;
         gameObject.AddComponent<Rigidbody>();
         gameObject.GetComponent<Rigidbody>().mass = totalMass;
-        gameObject.AddComponent<OVRGrabbable>();
+        //gameObject.AddComponent<OVRGrabbable>();
 
         return;
     }
