@@ -623,6 +623,10 @@ PrefabInstance:
       propertyPath: m_Convex
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 785666642, guid: 40cdb1261502c5147946ac48cebac02b, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40cdb1261502c5147946ac48cebac02b, type: 3}
 --- !u!1 &764888541
@@ -808,6 +812,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1084553194, guid: 2934d248fbf71ae43908c5dba87ac6e5, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2934d248fbf71ae43908c5dba87ac6e5, type: 3}
 --- !u!1 &950657333
@@ -968,6 +976,10 @@ PrefabInstance:
       propertyPath: m_Convex
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 128935685, guid: 8d931b3fb82717949a490ba2479926c4, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d931b3fb82717949a490ba2479926c4, type: 3}
 --- !u!1001 &1072366658
@@ -1047,6 +1059,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 785666641, guid: 40cdb1261502c5147946ac48cebac02b, type: 3}
       propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 785666642, guid: 40cdb1261502c5147946ac48cebac02b, type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1467,7 +1483,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Arbre: {fileID: 5015803992785559093, guid: 6ccd7b3c2982b824da144c5892f9ff69, type: 3}
-  havebeentaken: 0
 --- !u!135 &1428987990
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1663,6 +1678,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114526029, guid: f0b038078591d7441bbc6586bbc421d2, type: 3}
       propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114526030, guid: f0b038078591d7441bbc6586bbc421d2, type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2107,6 +2126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a9378c3fd63ef8409792119a99bc9a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canTeleport: 0
   TeleportMark: {fileID: 1197834980}
   Player: {fileID: 1494521049}
   RayLengtht: 50
@@ -2207,6 +2227,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114526029, guid: f0b038078591d7441bbc6586bbc421d2, type: 3}
       propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114526030, guid: f0b038078591d7441bbc6586bbc421d2, type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2396,6 +2420,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dayDuration: 200
   sunTransform: {fileID: 1174249544}
+  angleSun: 0
 --- !u!4 &2087283910
 Transform:
   m_ObjectHideFlags: 0
@@ -2417,16 +2442,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 9066006180887872116, guid: defaedf4bd5482a40a289a177851eeb2,
-        type: 3}
-      propertyPath: m_Name
-      value: TreeBig
-      objectReference: {fileID: 0}
-    - target: {fileID: 9066006180887872116, guid: defaedf4bd5482a40a289a177851eeb2,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5443643923782676583, guid: defaedf4bd5482a40a289a177851eeb2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2480,6 +2495,16 @@ PrefabInstance:
     - target: {fileID: 5443643923782676583, guid: defaedf4bd5482a40a289a177851eeb2,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9066006180887872116, guid: defaedf4bd5482a40a289a177851eeb2,
+        type: 3}
+      propertyPath: m_Name
+      value: TreeBig
+      objectReference: {fileID: 0}
+    - target: {fileID: 9066006180887872116, guid: defaedf4bd5482a40a289a177851eeb2,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
