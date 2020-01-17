@@ -28,14 +28,15 @@ public class FootstepsSound : MonoBehaviour
     void Update()
     {
         Vector2 primaryAxis = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick);
-        if (Mathf.Abs(primaryAxis.y) > 0.2f)
+        float mag = new Vector2(primaryAxis.x, primaryAxis.y).magnitude;
+        if (mag > 0.2f)
         {
-            stepLength = 1.1f - Mathf.Abs(primaryAxis.y) * 2 / 3;
-        }
+            stepLength = 1.1f - mag * 2 / 3;
+        }/*
         else if (Mathf.Abs(primaryAxis.x) > 0.2f)
         {
             stepLength = 1.1f - Mathf.Abs(primaryAxis.x) * 2 / 3;
-        }
+        }*/
         else
         {
             stepLength = Mathf.Infinity;
