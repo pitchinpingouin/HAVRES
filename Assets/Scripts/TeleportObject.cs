@@ -62,4 +62,34 @@ public class TeleportObject : MonoBehaviour
         }
 
     }
+
+    private void OnTriggerStay(Collider collision)
+    {
+        if (OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger) > 0.3f && collision.gameObject.layer == 10)
+        {
+            // activeController = OVRInput.GetActiveController();
+            //if (activeController == OVRInput.Controller.LTrackedRemote)
+            //{
+            collision.gameObject.transform.position = new Vector3(LeftHand.transform.position.x, LeftHand.transform.position.y, LeftHand.transform.position.z);
+            //}
+            /*else
+            {
+                collision.gameObject.transform.position = new Vector3(RightHand.transform.position.x , RightHand.transform.position.y , RightHand.transform.position.z );
+            }*/
+
+        }
+        if (OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger) > 0.3f && collision.gameObject.layer == 10)
+        {
+            // activeController = OVRInput.GetActiveController();
+            //if (activeController == OVRInput.Controller.LTrackedRemote)
+            //{
+            // collision.gameObject.transform.position = new Vector3(LeftHand.transform.position.x, LeftHand.transform.position.y, LeftHand.transform.position.z);
+            //}
+            //else
+            // {
+            collision.gameObject.transform.position = new Vector3(RightHand.transform.position.x, RightHand.transform.position.y, RightHand.transform.position.z);
+            // }
+
+        }
+    }
 }
