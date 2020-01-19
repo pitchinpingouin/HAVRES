@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
-namespace ControllerSelection
+//namespace ControllerSelection
+namespace OculusSampleFramework
 {
     public class OVRInputHelpers
     {

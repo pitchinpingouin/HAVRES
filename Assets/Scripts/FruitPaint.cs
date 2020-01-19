@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using OculusSampleFramework;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,7 +18,7 @@ public class FruitPaint : MonoBehaviour
     void Update()
     {
         
-        if (!havebeentaken && GetComponent<OVRGrabbable>().isGrabbed)
+        if (!havebeentaken && GetComponent<DistanceGrabbable>().isGrabbed)
         {
             havebeentaken = true;
         }
@@ -27,6 +28,7 @@ public class FruitPaint : MonoBehaviour
     {
         if (havebeentaken && collision.gameObject.CompareTag("Ground"))
         {
+
             Destroy(gameObject);
             ContactPoint contact = collision.contacts[0];
             Quaternion rotation = Quaternion.FromToRotation(Vector3.up, contact.normal);

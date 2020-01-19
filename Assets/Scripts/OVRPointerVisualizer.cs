@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace ControllerSelection
+//namespace ControllerSelection
+namespace OculusSampleFramework
 {
 
     public class OVRPointerVisualizer : MonoBehaviour
