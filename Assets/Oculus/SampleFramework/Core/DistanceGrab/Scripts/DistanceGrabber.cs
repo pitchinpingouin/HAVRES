@@ -78,6 +78,36 @@ namespace OculusSampleFramework
         // MTF TODO: verify this still works!
         protected Collider m_targetCollider;
 
+
+        // elements from OVRPointerVisualizer
+        [Header("(Optional) Tracking space")]
+        [Tooltip("Tracking space of the OVRCameraRig.\nIf tracking space is not set, the scene will be searched.\nThis search is expensive.")]
+        public Transform trackingSpace = null;
+        [Header("Visual Elements")]
+        [Tooltip("Line Renderer used to draw selection ray.")]
+        public LineRenderer linePointer = null;
+        [Tooltip("Fallback gaze pointer.")]
+        public Transform gazePointer = null;
+        [Tooltip("Visually, how far out should the ray be drawn.")]
+        public float rayDrawDistance = 500;
+        [Tooltip("How far away the gaze pointer should be from the camera.")]
+        public float gazeDrawDistance = 3;
+        [Tooltip("Show gaze pointer as ray pointer.")]
+        public bool showRayPointer = true;
+
+        // Start ray draw distance
+        private const float StartRayDrawDistance = 0.032f;
+
+        [HideInInspector]
+        public OVRInput.Controller activeController = OVRInput.Controller.None;
+
+       
+
+
+
+
+
+
         protected override void Start()
         {
             base.Start();
@@ -108,11 +138,67 @@ namespace OculusSampleFramework
 #endif
     }
 
-    void Update()
+        //function from ovrpointervisualiser
+
+        public void SetPointer(Ray ray)
+        {
+            float hitRayDrawDistance = rayDrawDistance;
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit))
+            {
+                hitRayDrawDistance = hit.distance;
+            }
+
+            if (linePointer != null)
+            {
+                linePointer.SetPosition(0, ray.origin + ray.direction * StartRayDrawDistance);
+                linePointer.SetPosition(1, ray.origin + ray.direction * hitRayDrawDistance);
+            }
+
+            if (gazePointer != null)
+            {
+                gazePointer.position = ray.origin + ray.direction * (showRayPointer ? hitRayDrawDistance : gazeDrawDistance);
+            }
+        }
+        //function from ovrpointervisualiser
+        public void SetPointerVisibility()
+        {
+            if (trackingSpace != null && activeController != OVRInput.Controller.None)
+            {
+                if (linePointer != null)
+                {
+                    linePointer.enabled = true;
+                }
+                if (gazePointer != null)
+                {
+                    gazePointer.gameObject.SetActive(showRayPointer ? true : false);
+                }
+            }
+            else
+            {
+                if (linePointer != null)
+                {
+                    linePointer.enabled = false;
+                }
+                if (gazePointer != null)
+                {
+                    gazePointer.gameObject.SetActive(showRayPointer ? false : true);
+                }
+            }
+        }
+
+        void Update()
         {
 
-            Debug.DrawRay(transform.position, transform.forward, Color.red, 0.1f);
-            
+            //Debug.DrawRay(transform.position, transform.forward, Color.red, 0.1f);
+
+            //lines from ovrpointervisualiser
+
+           /* activeController = OVRInputHelpers.GetControllerForButton(OVRInput.Button.PrimaryIndexTrigger, activeController);
+            Ray selectionRay = OVRInputHelpers.GetSelectionRay(activeController, trackingSpace);
+            SetPointerVisibility();
+            SetPointer(selectionRay);*/
+
             DistanceGrabbable target;
             Collider targetColl;
             FindTarget(out target, out targetColl);
@@ -234,7 +320,7 @@ namespace OculusSampleFramework
             dgOut = null;
             collOut = null;
             float closestMagSq = float.MaxValue;
-
+            /*
             // First test for objects within the grab volume, if we're using those.
             // (Some usage of DistanceGrabber will not use grab volumes, and will only 
             // use spherecasts, and that's supported.)
@@ -244,6 +330,10 @@ namespace OculusSampleFramework
                 bool canGrab = grabbable != null && grabbable.InRange && !(grabbable.isGrabbed && !grabbable.allowOffhandGrab);
                 if (!canGrab)
                 {
+                   activeController = OVRInputHelpers.GetControllerForButton(OVRInput.Button.PrimaryIndexTrigger, activeController);
+                    Ray selectionRay = OVRInputHelpers.GetSelectionRay(activeController, trackingSpace);
+                    SetPointerVisibility();
+                    SetPointer(selectionRay);
                     continue;
                 }
 
@@ -260,16 +350,25 @@ namespace OculusSampleFramework
                         {
                             // NOTE: if this raycast fails, ideally we'd try other rays near the edges of the object, especially for large objects.
                             // NOTE 2: todo optimization: sort the objects before performing any raycasts.
-                            Ray ray = new Ray();
-                            ray.direction = grabbable.transform.position - m_gripTransform.position;
-                            ray.origin = m_gripTransform.position;
-                            RaycastHit obstructionHitInfo;
-                            Debug.DrawRay(ray.origin, ray.direction, Color.red, 0.1f);
 
-                            if (Physics.Raycast(ray, out obstructionHitInfo, m_maxGrabDistance, 1 << m_obstructionLayer))
+                          Ray selectionRay = new Ray();
+
+
+
+                            selectionRay.direction = grabbable.transform.position - m_gripTransform.position;
+                            selectionRay.origin = m_gripTransform.position;
+                            RaycastHit obstructionHitInfo;
+                            //Debug.DrawRay(ray.origin, ray.direction, Color.red, 0.1f);
+
+                            if (Physics.Raycast(selectionRay, out obstructionHitInfo, m_maxGrabDistance, 1 << m_obstructionLayer))
                             {
                                 float distToObject = (grabbableCollider.ClosestPointOnBounds(m_gripTransform.position) - m_gripTransform.position).magnitude;
-                                if(distToObject > obstructionHitInfo.distance * 1.1)
+
+         
+
+
+
+                                if (distToObject > obstructionHitInfo.distance * 1.1)
                                 {
                                     accept = false;
                                 }
@@ -289,7 +388,22 @@ namespace OculusSampleFramework
             {
                 return FindTargetWithSpherecast(out dgOut, out collOut);
             }
-            return dgOut != null;
+            return dgOut != null;*/
+
+            activeController = OVRInputHelpers.GetControllerForButton(OVRInput.Button.PrimaryIndexTrigger, activeController);
+            Ray selectionRay = OVRInputHelpers.GetSelectionRay(activeController, trackingSpace);
+            SetPointerVisibility();
+            SetPointer(selectionRay);
+            RaycastHit hit; 
+            if (Physics.Raycast(selectionRay, out hit, m_maxGrabDistance,1 << 10))
+            {
+                
+                collOut = hit.collider;
+                dgOut = hit.collider.gameObject.GetComponent<DistanceGrabbable>();
+            }
+
+
+                return dgOut != null;
         }
 
         protected bool FindTargetWithSpherecast(out DistanceGrabbable dgOut, out Collider collOut)

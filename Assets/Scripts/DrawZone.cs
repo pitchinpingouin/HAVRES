@@ -39,63 +39,40 @@ public class DrawZone : MonoBehaviour
                 ResetZone();
             }
 
+            if(state == 1)
+            {
+                DrawMark2.transform.position = hit.point + Vector3.up * 0.1f;
+            }
+
+
             if (Physics.Raycast(ray, out hit, RayLengtht))
             {
                 if (hit.collider.tag == "Ground")
                 {
-                    if (state == 1)
-                    {
-                        DrawMark1.transform.position = hit.point + Vector3.up * 0.1f;
-                    }
-
-                    if (state == 3)
-                    {
-                        DrawMark2.transform.position = hit.point + Vector3.up * 0.1f;
-                    }
-
                     if (OVRInput.GetDown(OVRInput.Button.Two))
                     {
                         {
-                            if (state == 2)
-                            {
-                                DrawMark2.SetActive(true);
-                            }
-
                             if (state == 0)
                             {
+                                state = 1;
+                                DrawMark1.transform.position = hit.point + Vector3.up * 0.1f;
                                 DrawMark1.SetActive(true);
                             }
-
-                            state++;
+                            else
+                            {
+                                state = 0;
+                            }
                         }
                     }
 
                     if (OVRInput.GetUp(OVRInput.Button.Two))
                     {
-                        if (state > 4)
+                        if (state > 0)
                         {
-                            state = 0;
+                            centerTransform.position = DrawMark2.transform.position + 0.5f * (DrawMark1.transform.position - DrawMark2.transform.position);
+                            centerTransform.localScale = ((DrawMark1.transform.position - DrawMark2.transform.position) + Vector3.up * 10.0f);
+                            centerTransform.gameObject.SetActive(true);
                         }
-                        else
-                        {
-                            state++;
-                            if (state == 4)
-                            {
-                                //Sélectionne les items dans la zone
-                                centerTransform.position = DrawMark2.transform.position + 0.5f * (DrawMark1.transform.position - DrawMark2.transform.position);
-                                centerTransform.localScale = ((DrawMark1.transform.position - DrawMark2.transform.position) + Vector3.up * 10.0f);
-                                centerTransform.gameObject.SetActive(true);
-                            }
-                        }
-
-                    }
-                }
-
-                else
-                {
-                    if (OVRInput.GetDown(OVRInput.Button.Two))
-                    {
-                        state = 0;
                     }
                 }
             }

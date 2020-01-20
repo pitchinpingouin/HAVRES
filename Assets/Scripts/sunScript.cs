@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class sunScript : MonoBehaviour
+public class SunScript : MonoBehaviour
 {
     [SerializeField] private float dayDuration;
-    
+
     public Transform sunTransform { get; private set; }
     private Light sunLight;
 
@@ -25,7 +25,7 @@ public class sunScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(angleSun < sunFullyRisedAngle)
+        if (angleSun < sunFullyRisedAngle)
         {
             sunLight.intensity = Mathf.Lerp(0.0f, maxIntensity, angleSun / sunFullyRisedAngle);
         }
@@ -40,7 +40,7 @@ public class sunScript : MonoBehaviour
 
         timeOfDay += Time.deltaTime;
 
-        if(timeOfDay > dayDuration)
+        if (timeOfDay > dayDuration)
         {
             timeOfDay -= dayDuration;
         }

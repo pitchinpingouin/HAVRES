@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using OculusSampleFramework;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,9 +20,10 @@ public class Graine : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!havebeentaken && GetComponent<OVRGrabbable>().isGrabbed)
+        if (!havebeentaken && GetComponent<DistanceGrabbable>().isGrabbed)
         {
             havebeentaken = true;
+            
         }
     }
 
