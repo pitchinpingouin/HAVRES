@@ -33,7 +33,7 @@ public class SunScript : MonoBehaviour
 
         if (angleSun > (180 - sunFullyRisedAngle))
         {
-            sunLight.intensity = Mathf.Lerp(maxIntensity, 0.0f, (angleSun - (180 - sunFullyRisedAngle) / sunFullyRisedAngle));
+            sunLight.intensity = Mathf.Lerp(maxIntensity, 0.0f, (angleSun - (180 - sunFullyRisedAngle)) / sunFullyRisedAngle);
         }
 
         angleSun = 360 * timeOfDay / dayDuration;
