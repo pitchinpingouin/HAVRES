@@ -12,6 +12,8 @@ public class DrawZone : MonoBehaviour
     public float RayLengtht = 50f;
     public Transform centerTransform;
     private float state;
+    RaycastHit hit;
+
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +34,6 @@ public class DrawZone : MonoBehaviour
         if (canDrawZone)
         {
             Ray ray = new Ray(transform.position, transform.forward);
-            RaycastHit hit;
 
             if (state == 0)
             {

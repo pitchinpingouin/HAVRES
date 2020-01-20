@@ -19,6 +19,7 @@ public class SunScript : MonoBehaviour
     void Start()
     {
         timeOfDay = 0.0f;
+        sunTransform = transform;
         sunLight = sunTransform.gameObject.GetComponent<Light>();
     }
 

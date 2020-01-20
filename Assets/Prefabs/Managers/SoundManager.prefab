@@ -45,8 +45,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fee24cde9a830864fbcec5e91545688f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dayAudio: {fileID: 0}
-  nightAudio: {fileID: 0}
+  dayAudio: {fileID: 8545882349813518034, guid: 27ad08038f869f2449191c30b03ec1fe,
+    type: 3}
+  nightAudio: {fileID: 684408646262529781, guid: 9de84182b066cec49b22bc4b0f9fad87,
+    type: 3}
   sceneManager: {fileID: 0}
 --- !u!114 &474126036745431767
 MonoBehaviour:

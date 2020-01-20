@@ -43,7 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26b72b80b1fa8cc48b0c16e1d599d50c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dayDuration: 500
-  sunTransform: {fileID: 8757466728659621037, guid: ce0d069e511c00649b7998703ef8dd44,
-    type: 3}
-  angleSun: 0
+  dayDuration: 200
+  sunFullyRisedAngle: 45
+  maxIntensity: 1
