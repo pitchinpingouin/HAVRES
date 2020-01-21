@@ -5,6 +5,7 @@ using UnityEngine;
 public class OnTriggerGrabbable : MonoBehaviour
 {
     private List<Collider> colliders = new List<Collider>();
+    private List<Vector3> massDragAngulardrag = new List<Vector3>();
 
     private void OnEnable()
     {
@@ -12,6 +13,7 @@ public class OnTriggerGrabbable : MonoBehaviour
         if(colliders.Count > 0)
         {
             colliders.Clear();
+            massDragAngulardrag.Clear();
         }
         
 
@@ -22,17 +24,21 @@ public class OnTriggerGrabbable : MonoBehaviour
         //If other is grabbable
         if (colliderEncountered.gameObject.layer == 10)
         {
+            Rigidbody rgbd = colliderEncountered.GetComponent<Rigidbody>();
             //Add it to the list if it 's not already in
             if (!colliders.Contains(colliderEncountered))
             {
                 colliders.Add(colliderEncountered);
+                massDragAngulardrag.Add(new Vector3(rgbd.mass, rgbd.drag, rgbd.angularDrag));
             }
-            Rigidbody rgdb = colliderEncountered.GetComponent<Rigidbody>();
+            
             //Remove Gravity to the object
-            rgdb.useGravity = false;
-            rgdb.isKinematic = true;
+            rgbd.useGravity = false;
+            rgbd.isKinematic = true;
 
 
+            rgbd.angularDrag = 9999999f;
+            rgbd.drag = 99999999f;
 
             //Remove collider of the object
             ///rgdb.detectCollisions = false;
@@ -48,17 +54,26 @@ public class OnTriggerGrabbable : MonoBehaviour
             //Add it to the list if it 's not already in
             if (colliders.Contains(colliderExiting))
             {
-                colliders.Remove(colliderExiting);
-            
                 Rigidbody rgdb = colliderExiting.GetComponent<Rigidbody>();
+                int index = colliders.IndexOf(colliderExiting);
 
-                //Remove Gravity to the object
+
+                //Reset the parameters of the rgbd
+                rgdb.mass = massDragAngulardrag[index].x;
+                rgdb.drag = massDragAngulardrag[index].y;
+                rgdb.angularDrag = massDragAngulardrag[index].z;
+
                 rgdb.useGravity = true;
                 rgdb.isKinematic = false;
 
 
-                //Remove detection of collisions
+                //Reset detection of collisions
                 ///rgdb.detectCollisions = true;
+                ///
+
+                //Remove object from lists
+                massDragAngulardrag.RemoveAt(index);
+                colliders.Remove(colliderExiting);
             }
         }
     }
