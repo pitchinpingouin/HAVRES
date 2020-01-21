@@ -12,7 +12,6 @@ public class DrawZone : MonoBehaviour
     public float RayLengtht = 50f;
     public Transform centerTransform;
     private float state;
-    RaycastHit hit;
 
 
     // Start is called before the first frame update
@@ -33,7 +32,6 @@ public class DrawZone : MonoBehaviour
     {
         if (canDrawZone)
         {
-            Ray ray = new Ray(transform.position, transform.forward);
 
             if (state == 0)
             {
@@ -42,39 +40,33 @@ public class DrawZone : MonoBehaviour
 
             if(state == 1)
             {
-                DrawMark2.transform.position = hit.point + Vector3.up * 0.1f;
+                //DrawMark2.transform.position = point d'impact du laser;
             }
 
-
-            if (Physics.Raycast(ray, out hit, RayLengtht))
+            if (OVRInput.GetDown(OVRInput.Button.Two))
             {
-                if (hit.collider.tag == "Ground")
                 {
-                    if (OVRInput.GetDown(OVRInput.Button.Two))
+                    
+                    if (state == 0)
                     {
-                        {
-                            if (state == 0)
-                            {
-                                state = 1;
-                                DrawMark1.transform.position = hit.point + Vector3.up * 0.1f;
-                                DrawMark1.SetActive(true);
-                            }
-                            else
-                            {
-                                state = 0;
-                            }
-                        }
+                        state = 1;
+                        //DrawMark1.transform.position = point d'impact du laser;
+                        DrawMark1.SetActive(true);
                     }
+                    else
+                    {
+                        state = 0;
+                    }
+                }
+            }
 
-                    if (OVRInput.GetUp(OVRInput.Button.Two))
-                    {
-                        if (state > 0)
-                        {
-                            centerTransform.position = DrawMark2.transform.position + 0.5f * (DrawMark1.transform.position - DrawMark2.transform.position);
-                            centerTransform.localScale = ((DrawMark1.transform.position - DrawMark2.transform.position) + Vector3.up * 10.0f);
-                            centerTransform.gameObject.SetActive(true);
-                        }
-                    }
+            if (OVRInput.GetUp(OVRInput.Button.Two))
+            {
+                if (state > 0)
+                {
+                    centerTransform.position = DrawMark2.transform.position + 0.5f * (DrawMark1.transform.position - DrawMark2.transform.position);
+                    centerTransform.localScale = ((DrawMark1.transform.position - DrawMark2.transform.position) + Vector3.up * 10.0f);
+                    centerTransform.gameObject.SetActive(true);
                 }
             }
         }
