@@ -22,7 +22,7 @@ public class SoundManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        angleSun = sceneManager.GetComponent<sunScript>().angleSun;
+        angleSun = sceneManager.GetComponent<SunScript>().angleSun;
         if (angleSun > 180 && !nightPlaying)
         {
             dayPlaying = false;
