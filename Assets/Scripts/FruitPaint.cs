@@ -33,7 +33,7 @@ public class FruitPaint : MonoBehaviour
             ContactPoint contact = collision.contacts[0];
             Quaternion rotation = Quaternion.FromToRotation(Vector3.up, contact.normal);
             Vector3 contactpt = contact.point;
-            Instantiate(tache, new Vector3(contactpt.x, contactpt.y+0.01f/*+ 0.05f*/, contactpt.z), rotation);
+            Instantiate(tache, new Vector3(contactpt.x, contactpt.y-0.15f/*+ 0.05f*/, contactpt.z), rotation);
 
 
            

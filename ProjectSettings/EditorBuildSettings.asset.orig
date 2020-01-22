@@ -18,6 +18,11 @@ EditorBuildSettings:
     path: Assets/Oculus/SampleFramework/Usage/DistanceGrab.unity
     guid: 24f58b3f0ca02d44eaec7f50bca538f2
   - enabled: 1
+<<<<<<< HEAD
+    path: Assets/Scenes/testMeshes.unity
+    guid: 1727ffb64b5b36f47b740a4cd870dab2
+=======
     path: Assets/Scenes/SceneMargaux.unity
     guid: b147403bd31683743acb8b550cc3c52d
+>>>>>>> b8fa8181e68dfc6748fed7d03c33d3bc48cfeceb
   m_configObjects: {}
