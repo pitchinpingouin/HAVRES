@@ -40,6 +40,6 @@ public class ButtonStayTrigger : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        isTrigger = isTrigger;
+       // isTrigger = isTrigger;
     }
 }

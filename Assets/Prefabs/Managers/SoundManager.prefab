@@ -49,7 +49,7 @@ MonoBehaviour:
     type: 3}
   nightAudio: {fileID: 684408646262529781, guid: 9de84182b066cec49b22bc4b0f9fad87,
     type: 3}
-  sceneManager: {fileID: 0}
+  sun: {fileID: 0}
 --- !u!114 &474126036745431767
 MonoBehaviour:
   m_ObjectHideFlags: 0
