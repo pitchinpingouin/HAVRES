@@ -25,7 +25,7 @@ public class CatFollowBall : MonoBehaviour
     {
         if (!havebeentaken && dg.isGrabbed) //mettre distance grabbable
         {
-            //catSource.PlayOneShot(catMeowSound, 1);
+            catSource.PlayOneShot(catMeowSound, 1);
             havebeentaken = true;
         }
         float dist = Vector3.Distance(transform.position, ball.transform.position);
