@@ -101,6 +101,18 @@ namespace OculusSampleFramework
         [HideInInspector]
         public OVRInput.Controller activeController = OVRInput.Controller.None;
 
+        private RaycastHit hit;
+
+        public RaycastHit Hit
+        {
+            get
+            {
+                return this.hit;
+            }
+
+        }
+
+
        
 
 
@@ -143,7 +155,6 @@ namespace OculusSampleFramework
         public void SetPointer(Ray ray)
         {
             float hitRayDrawDistance = rayDrawDistance;
-            RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
                 hitRayDrawDistance = hit.distance;
@@ -151,6 +162,8 @@ namespace OculusSampleFramework
 
             if (linePointer != null)
             {
+               
+               
                 linePointer.SetPosition(0, ray.origin + ray.direction * StartRayDrawDistance);
                 linePointer.SetPosition(1, ray.origin + ray.direction * hitRayDrawDistance);
             }
@@ -190,18 +203,10 @@ namespace OculusSampleFramework
         void Update()
         {
 
-            //Debug.DrawRay(transform.position, transform.forward, Color.red, 0.1f);
-
-            //lines from ovrpointervisualiser
-
-           /* activeController = OVRInputHelpers.GetControllerForButton(OVRInput.Button.PrimaryIndexTrigger, activeController);
-            Ray selectionRay = OVRInputHelpers.GetSelectionRay(activeController, trackingSpace);
-            SetPointerVisibility();
-            SetPointer(selectionRay);*/
-
+           
             DistanceGrabbable target;
             Collider targetColl;
-            FindTarget(out target, out targetColl);
+            FindTargetWithRay(out target, out targetColl);
 
             if (target != m_target)
             {
@@ -320,7 +325,7 @@ namespace OculusSampleFramework
             dgOut = null;
             collOut = null;
             float closestMagSq = float.MaxValue;
-            /*
+            
             // First test for objects within the grab volume, if we're using those.
             // (Some usage of DistanceGrabber will not use grab volumes, and will only 
             // use spherecasts, and that's supported.)
@@ -388,22 +393,28 @@ namespace OculusSampleFramework
             {
                 return FindTargetWithSpherecast(out dgOut, out collOut);
             }
-            return dgOut != null;*/
+            return dgOut != null;
 
+        }
+
+        protected bool FindTargetWithRay(out DistanceGrabbable dgOut, out Collider collOut)
+        {
+            dgOut = null;
+            collOut = null;
             activeController = OVRInputHelpers.GetControllerForButton(OVRInput.Button.PrimaryIndexTrigger, activeController);
             Ray selectionRay = OVRInputHelpers.GetSelectionRay(activeController, trackingSpace);
             SetPointerVisibility();
             SetPointer(selectionRay);
-            RaycastHit hit; 
-            if (Physics.Raycast(selectionRay, out hit, m_maxGrabDistance,1 << 10))
+            RaycastHit hit;
+            if (Physics.Raycast(selectionRay, out hit, m_maxGrabDistance, 1 << 10))
             {
-                
+
                 collOut = hit.collider;
                 dgOut = hit.collider.gameObject.GetComponent<DistanceGrabbable>();
             }
 
 
-                return dgOut != null;
+            return dgOut != null;
         }
 
         protected bool FindTargetWithSpherecast(out DistanceGrabbable dgOut, out Collider collOut)
