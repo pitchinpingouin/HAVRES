@@ -11,6 +11,19 @@ public class CatSound : MonoBehaviour
 
     private AudioSource catSource;
 
+    private bool rightTouching;
+
+    private bool leftTouching;
+
+    private float timer;
+
+    private float timerMax;
+
+    public AudioClip hapticsAudioClip;
+
+    private OVRHapticsClip hapticsClip;
+
+
     //private OVRHapticsClip clipLight;
 
     //[SerializeField]
@@ -21,6 +34,11 @@ public class CatSound : MonoBehaviour
     void Start()
     {
         catSource = GetComponent<AudioSource>();
+        leftTouching = false;
+        rightTouching = false;
+        timer = 0.0f;
+        timerMax = 4f;
+        hapticsClip = new OVRHapticsClip(hapticsAudioClip);
         //InitializeOVRHaptics();
         //Vibrate();
     }
@@ -28,6 +46,8 @@ public class CatSound : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*StartCoroutine(WaitVibration(0));
+        StartCoroutine(WaitVibration(1));*/
         
     }
     /*
@@ -54,15 +74,19 @@ public class CatSound : MonoBehaviour
         channel.Preempt(clipLight);
     }*/
 
-    /*
+    
     public void OnTriggerEnter(Collider collider)
     {
+        
 
         if (collider.CompareTag("LeftHand"))
         {
+            //OVRHaptics.LeftChannel.Preempt(hapticsClip);
+            catSource.loop = true;
             catSource.clip = catRonronSound;
             catSource.Play();
-            OVRInput.SetControllerVibration(0.005f, 0.1f, OVRInput.Controller.LTouch);
+            //leftTouching = true;
+            
             //catSource.PlayOneShot(catMeowSound, 1);
             //TriggerVibration(catMeowSound, OVRInput.Controller.LTouch);
             //TriggerVibration(catMeowSound, 0);
@@ -70,23 +94,51 @@ public class CatSound : MonoBehaviour
         }
         else if (collider.CompareTag("RightHand"))
         {
+            //OVRHaptics.RightChannel.Preempt(hapticsClip);
+            catSource.loop = true;
             catSource.clip = catRonronSound;
             catSource.Play();
-            OVRInput.SetControllerVibration(0.005f, 0.1f, OVRInput.Controller.RTouch);
+            //rightTouching = true;
             //catSource.PlayOneShot(catMeowSound, 1);
             //TriggerVibration2(500, 5, 255, 1);
 
             //TriggerVibration(catMeowSound, 1);
         }
-    }*/
-    
+    }
+    /*
+    IEnumerator WaitVibration(int hand)
+    {
+        WaitForSeconds wait = new WaitForSeconds(2);
+        yield return wait;
+
+        if (hand == 0 && leftTouching)
+        {
+            OVRInput.SetControllerVibration(0.1f, 0.1f, OVRInput.Controller.LTouch);
+        }
+        else if (hand == 1 && rightTouching)
+        {
+            OVRInput.SetControllerVibration(0.1f, 0.1f, OVRInput.Controller.RTouch);
+        }
+        
+        
+    }
+    */
     public void OnTriggerStay(Collider collider)
     {
+        timer += Time.deltaTime;
         if (collider.CompareTag("LeftHand"))
-        {
-            catSource.clip = catRonronSound;
-            catSource.Play();
-            OVRInput.SetControllerVibration(0.000001f, 0.1f, OVRInput.Controller.LTouch);
+        { 
+            //OVRHaptics.LeftChannel.Preempt(hapticsClip);
+            /*catSource.clip = catRonronSound;
+            catSource.Play();*/
+            if (timer > timerMax)
+            {
+                OVRInput.SetControllerVibration(0.1f, 0.1f, OVRInput.Controller.LTouch);
+                timer = 0.0f;
+
+                // Do Stuff
+            }
+            
             //OVRInput.SetControllerVibration(0.005f, 0.1f, OVRInput.Controller.LTouch);
             //catSource.PlayOneShot(catMeowSound, 1);
             //TriggerVibration(catRonronSound, OVRInput.Controller.LTouch);
@@ -95,9 +147,17 @@ public class CatSound : MonoBehaviour
         }
         else if (collider.CompareTag("RightHand"))
         {
-            catSource.clip = catRonronSound;
-            catSource.Play();
-            OVRInput.SetControllerVibration(0.000001f, 0.1f, OVRInput.Controller.RTouch);
+            //OVRHaptics.RightChannel.Preempt(hapticsClip);
+            if (timer > timerMax)
+            {
+                OVRInput.SetControllerVibration(0.1f, 0.1f, OVRInput.Controller.RTouch);
+                timer = 0.0f;
+
+                // Do Stuff
+            }
+            /*catSource.clip = catRonronSound;
+            catSource.Play();*/
+            
             //OVRInput.SetControllerVibration(0.005f, 0.1f, OVRInput.Controller.RTouch);
             //catSource.PlayOneShot(catMeowSound, 1);
 
@@ -110,17 +170,21 @@ public class CatSound : MonoBehaviour
     
     public void OnTriggerExit(Collider collider)
     {
+        timer = 0.0f;
         if (collider.CompareTag("LeftHand"))
         {
+            //leftTouching = false;
             //OVRHaptics.LeftChannel.Clear();
-            catSource.Stop();
+            catSource.loop = false;
             OVRInput.SetControllerVibration(0, 0, OVRInput.Controller.LTouch);
             //catSource.PlayOneShot(catMeowSound, 1);
         }
         else if (collider.CompareTag("RightHand"))
         {
+            //rightTouching = false;
             //OVRHaptics.RightChannel.Clear();
-            catSource.Stop();
+            //catSource.Stop();
+            catSource.loop = false;
             OVRInput.SetControllerVibration(0, 0, OVRInput.Controller.RTouch);
         }
     }

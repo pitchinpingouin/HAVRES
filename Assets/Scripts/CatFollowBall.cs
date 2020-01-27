@@ -25,6 +25,8 @@ public class CatFollowBall : MonoBehaviour
     {
         if (!havebeentaken && dg.isGrabbed) //mettre distance grabbable
         {
+            transform.LookAt(ball.transform);
+            transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0);
             catSource.PlayOneShot(catMeowSound, 1);
             havebeentaken = true;
         }
