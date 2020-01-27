@@ -52,4 +52,9 @@ public class CatFollowBall : MonoBehaviour
 
         
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        havebeentaken = false;//permet d'arrêter le chat s'il rencontre un obstacle 
+        anim.Play("idle"); 
+    }
 }

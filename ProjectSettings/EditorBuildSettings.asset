@@ -17,7 +17,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Oculus/SampleFramework/Usage/DistanceGrab.unity
     guid: 24f58b3f0ca02d44eaec7f50bca538f2
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SceneMargaux.unity
     guid: b147403bd31683743acb8b550cc3c52d
+  - enabled: 1
+    path: Assets/Scenes/demoScene.unity
+    guid: 437b0a0efa6317946b1196520c0e7505
   m_configObjects: {}
