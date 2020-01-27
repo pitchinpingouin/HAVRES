@@ -11,7 +11,7 @@ public class CatBrush : MonoBehaviour
     void Start()
     {
         col = GetComponent<MeshRenderer>().material.color;
-        //fadeSpeed = 20;
+        fadeSpeed = 1f;
     }
 
     // Update is called once per frame
@@ -20,13 +20,13 @@ public class CatBrush : MonoBehaviour
         /*col = GetComponent<MeshRenderer>().material.color;
         col.a -= Time.deltaTime; //* fadeSpeed;
         this.GetComponent<MeshRenderer>().material.color = col;*/
-        /*if (col.a <= 0)
+        if (col.a <= 0)
         {
             gameObject.SetActive(false);
-        }*/
+        }
     }
-    
-    public void OnCollisionStay(Collision collision)
+
+    /*public void OnCollisionStay(Collision collision)
     {
         collision.gameObject.GetComponent<MeshRenderer>().material.color = Color.green;
         if (collision.gameObject.CompareTag("CatBrush"))
@@ -34,5 +34,18 @@ public class CatBrush : MonoBehaviour
             collision.gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
         }
         
+    }*/
+
+    public void OnTriggerStay(Collider collision)
+    {
+        //collision.GetComponent<MeshRenderer>().material.color = Color.green;
+        if (collision.CompareTag("CatBrush"))
+        {
+            col = this.GetComponent<MeshRenderer>().material.color;
+            col.a -= Time.deltaTime * fadeSpeed;
+            this.GetComponent<MeshRenderer>().material.color = col;
+            //collision.GetComponent<MeshRenderer>().material.color = Color.red;
+        }
+
     }
 }
