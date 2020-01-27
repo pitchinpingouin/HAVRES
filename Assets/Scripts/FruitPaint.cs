@@ -8,10 +8,13 @@ public class FruitPaint : MonoBehaviour
     [SerializeField]
     private GameObject tache;
     private bool havebeentaken;
+   
     // Start is called before the first frame update
     void Start()
     {
         havebeentaken = false;
+
+
     }
 
     // Update is called once per frame

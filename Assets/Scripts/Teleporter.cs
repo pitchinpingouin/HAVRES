@@ -8,7 +8,11 @@ public class Teleporter : MonoBehaviour
     public bool canTeleport;
     public GameObject TeleportMark;
     public Transform Player;
+    private Transform OVRPlayerTransform;
     public float RayLengtht = 50f;
+
+    private Vector3 initialRelativePosition;
+
     Vector3 markerPosition;
 
     // Start is called before the first frame update
@@ -16,6 +20,8 @@ public class Teleporter : MonoBehaviour
     {
         
         canTeleport = true;
+        OVRPlayerTransform = Player.Find("OVRPlayerController").transform;
+        initialRelativePosition = OVRPlayerTransform.localPosition;
         
     }
 
@@ -51,7 +57,9 @@ public class Teleporter : MonoBehaviour
                 if (TeleportMark.activeSelf)
                 {
                     markerPosition = TeleportMark.transform.position;
+
                     Player.position = new Vector3(markerPosition.x, Player.position.y, markerPosition.z);
+                    OVRPlayerTransform.localPosition = initialRelativePosition;
                 }
             }
             else
@@ -59,9 +67,5 @@ public class Teleporter : MonoBehaviour
                 TeleportMark.SetActive(false);
             }
         }
-        
-        
     }
-
-  
 }
