@@ -30,7 +30,7 @@ public class SoundManager : MonoBehaviour
             //nightAudio.Play();
             //dayAudio.Stop();
             StartCoroutine(StartFade(dayAudio, 5f, 0));
-            StartCoroutine(StartFade(nightAudio, 5f, 1));
+            StartCoroutine(StartFade(nightAudio, 5f, 0.5f));
         }
         else if (angleSun < 150 && !dayPlaying)
         {
@@ -39,7 +39,7 @@ public class SoundManager : MonoBehaviour
             nightPlaying = false;
             //dayAudio.Play();
             //nightAudio.Stop();
-            StartCoroutine(StartFade(dayAudio, 5f, 1));
+            StartCoroutine(StartFade(dayAudio, 5f, 0.5f));
             StartCoroutine(StartFade(nightAudio, 5f, 0));
 
         }

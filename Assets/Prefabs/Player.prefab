@@ -219,7 +219,7 @@ GameObject:
   - component: {fileID: 3419461866561664785}
   m_Layer: 0
   m_Name: LeftHandAnchor (1)
-  m_TagString: Hand
+  m_TagString: LeftHand
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -294,7 +294,7 @@ MonoBehaviour:
   m_useSpherecast: 0
   m_preventGrabThroughWalls: 1
   m_objectPullVelocity: 10
-  m_maxGrabDistance: 10
+  m_maxGrabDistance: 25
   m_grabObjectsInLayer: 10
   m_obstructionLayer: -1
   m_player: {fileID: 3419461867039100843}
@@ -348,7 +348,7 @@ LineRenderer:
   - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.02
+    widthMultiplier: 0.01
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -366,7 +366,7 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
+      key0: {r: 0.8962264, g: 0.68907976, b: 0.7917723, a: 1}
       key1: {r: 1, g: 1, b: 1, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
@@ -447,7 +447,7 @@ GameObject:
   - component: {fileID: 3149687849339831247}
   m_Layer: 0
   m_Name: RightHandAnchor (1)
-  m_TagString: Hand
+  m_TagString: RightHand
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -522,7 +522,7 @@ MonoBehaviour:
   m_useSpherecast: 0
   m_preventGrabThroughWalls: 1
   m_objectPullVelocity: 10
-  m_maxGrabDistance: 10
+  m_maxGrabDistance: 25
   m_grabObjectsInLayer: 10
   m_obstructionLayer: -1
   m_player: {fileID: 3419461867039100843}
@@ -542,7 +542,7 @@ LineRenderer:
   m_GameObject: {fileID: 3419461866663351082}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 0
   m_LightProbeUsage: 0
@@ -576,7 +576,7 @@ LineRenderer:
   - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.02
+    widthMultiplier: 0.01
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -594,7 +594,7 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
+      key0: {r: 0.9150943, g: 0.64315593, b: 0.7828926, a: 1}
       key1: {r: 1, g: 1, b: 1, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
@@ -770,6 +770,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3419461866231832678}
     m_Modifications:
+    - target: {fileID: 405955040713202460, guid: 3961cd96538c7f84585f8c3332bf4587,
+        type: 3}
+      propertyPath: m_Name
+      value: menuZone
+      objectReference: {fileID: 0}
+    - target: {fileID: 405955040713202460, guid: 3961cd96538c7f84585f8c3332bf4587,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 405955040713202461, guid: 3961cd96538c7f84585f8c3332bf4587,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -825,16 +835,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 405955040713202460, guid: 3961cd96538c7f84585f8c3332bf4587,
-        type: 3}
-      propertyPath: m_Name
-      value: menuZone
-      objectReference: {fileID: 0}
-    - target: {fileID: 405955040713202460, guid: 3961cd96538c7f84585f8c3332bf4587,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3961cd96538c7f84585f8c3332bf4587, type: 3}
 --- !u!4 &1104976105 stripped
@@ -850,6 +850,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3419461866231832678}
     m_Modifications:
+    - target: {fileID: 100008, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
+      propertyPath: m_Name
+      value: OVRPlayerController
+      objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -894,14 +902,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 100008, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
-      propertyPath: m_Name
-      value: OVRPlayerController
-      objectReference: {fileID: 0}
-    - target: {fileID: 100008, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
     - target: {fileID: 11400002, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: _trackingOriginType
       value: 1
@@ -910,19 +910,19 @@ PrefabInstance:
       propertyPath: resetTrackerOnLoad
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 134650, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
+    - target: {fileID: 168962, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: m_TagString
       value: Hand
       objectReference: {fileID: 0}
-    - target: {fileID: 134650, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
+    - target: {fileID: 168962, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 168962, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
+    - target: {fileID: 134650, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: m_TagString
       value: Hand
       objectReference: {fileID: 0}
-    - target: {fileID: 168962, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
+    - target: {fileID: 134650, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -930,13 +930,13 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Hand
       objectReference: {fileID: 0}
-    - target: {fileID: 1125068011842588, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
-      propertyPath: m_TagString
-      value: Hand
-      objectReference: {fileID: 0}
     - target: {fileID: 2015248, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: field of view
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1125068011842588, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
+      propertyPath: m_TagString
+      value: Hand
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
