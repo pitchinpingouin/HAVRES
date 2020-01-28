@@ -20,7 +20,6 @@ public class DrawZone : MonoBehaviour
 
     void Start()
     {
-  //      distanceGrabberScript = GetComponent<DistanceGrabber>();
         canDrawZone = true;
         state = 0;
     }
