@@ -30,10 +30,8 @@ public class ResourceGenerator : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log("ladies and gentlemen");
         if (other.gameObject == instance)
         {
-            Debug.Log("we got 'im");
             
             // Re-enable physics
             Rigidbody rgbd = instance.GetComponent<Rigidbody>();
