@@ -5,6 +5,7 @@ using UnityEngine;
 public class Menu : MonoBehaviour
 {
     public GameObject menuZone;
+
     public Transform OVRPlayerTransform;
     // Start is called before the first frame update
     void Start()
@@ -27,7 +28,6 @@ public class Menu : MonoBehaviour
                 menuZone.transform.rotation = OVRPlayerTransform.rotation;
                 menuZone.SetActive(true);
             }
-
         }
     }
 }
