@@ -37,7 +37,7 @@ public class CatSound : MonoBehaviour
         leftTouching = false;
         rightTouching = false;
         timer = 0.0f;
-        timerMax = 4f;
+        timerMax = 2f;
         hapticsClip = new OVRHapticsClip(hapticsAudioClip);
         //InitializeOVRHaptics();
         //Vibrate();
