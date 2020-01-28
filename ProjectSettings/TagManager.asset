@@ -9,6 +9,7 @@ TagManager:
   - Rock
   - LeftHand
   - RightHand
+  - CatBrush
   layers:
   - Default
   - TransparentFX
@@ -21,8 +22,8 @@ TagManager:
   - PostProcessing
   - Player
   - Grabbable
-  - 
-  - 
+  - Stain
+  - IgnoreGrabbable
   - 
   - 
   - 
@@ -45,4 +46,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Menu
+    uniqueID: 3851987545
     locked: 0

@@ -8,7 +8,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioSource nightAudio;
     private bool dayPlaying;
     private bool nightPlaying;
-    [SerializeField] private GameObject sceneManager;
+    [SerializeField] private GameObject sun;
     private float angleSun;
 
     // Start is called before the first frame update
@@ -22,7 +22,7 @@ public class SoundManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        angleSun = sceneManager.GetComponent<SunScript>().angleSun;
+        angleSun = sun.GetComponent<SunScript>().angleSun;
         if (angleSun > 180 && !nightPlaying)
         {
             dayPlaying = false;

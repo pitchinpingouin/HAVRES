@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Menu : MonoBehaviour
 {
-    public GameObject canvaParam;
+    public GameObject menuZone;
+    public Transform OVRPlayerTransform;
     // Start is called before the first frame update
     void Start()
     {
-        canvaParam.SetActive(false);
+        menuZone.SetActive(false);
     }
 
     // Update is called once per frame
@@ -16,13 +17,15 @@ public class Menu : MonoBehaviour
     {
         if (OVRInput.GetDown(OVRInput.Button.Three))
         {
-            if (canvaParam.activeSelf)
+            if (menuZone.activeSelf)
             {
-                canvaParam.SetActive(false);
+                menuZone.SetActive(false);
             }
             else
             {
-                canvaParam.SetActive(true);
+                menuZone.transform.position = OVRPlayerTransform.position;
+                menuZone.transform.rotation = OVRPlayerTransform.rotation;
+                menuZone.SetActive(true);
             }
 
         }
