@@ -88,14 +88,15 @@ public class DrawZone : MonoBehaviour
                      }
                      
                 }
-            }
-            else
-            {
-                if (OVRInput.GetDown(OVRInput.Button.Two))
+                else
                 {
-                    state = 0;
+                    if (OVRInput.GetDown(OVRInput.Button.Two))
+                    {
+                        state = 0;
+                    }
                 }
             }
+            
         }
     }
 }

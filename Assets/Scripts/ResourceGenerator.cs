@@ -48,7 +48,6 @@ public class ResourceGenerator : MonoBehaviour
     {
         int index = (resources.Count > 1) ? (int)(Random.value * (resources.Count - 1)) : 0; // if there is only one resource variant, no need to ask Random
         if (instance != null) return;
-        /* TODO : use a factory instead of instantiating every time */
         instance = Instantiate(resources[index], trigger.bounds.center, Quaternion.identity);
         // Disable physics
         Rigidbody rgbd = instance.GetComponent<Rigidbody>();
