@@ -20,7 +20,7 @@ public class Graine : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!havebeentaken && GetComponent<DistanceGrabbable>().isGrabbed)
+        if (!havebeentaken && (GetComponent<DistanceGrabbable>().isGrabbed || GetComponent<OVRGrabbable>().isGrabbed))
         {
             havebeentaken = true;
             

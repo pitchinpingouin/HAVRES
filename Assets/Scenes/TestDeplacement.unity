@@ -1700,25 +1700,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player (3)
       objectReference: {fileID: 0}
-    - target: {fileID: 3419461866231832679, guid: cc6dd3476b3b29943b0431875d0eb5cf,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3419461866231832678, guid: cc6dd3476b3b29943b0431875d0eb5cf,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 140.03
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 3419461866231832678, guid: cc6dd3476b3b29943b0431875d0eb5cf,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 38.02
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3419461866231832678, guid: cc6dd3476b3b29943b0431875d0eb5cf,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 144.96901
+      value: -0.65
       objectReference: {fileID: 0}
     - target: {fileID: 3419461866231832678, guid: cc6dd3476b3b29943b0431875d0eb5cf,
         type: 3}
@@ -1907,12 +1902,6 @@ MonoBehaviour:
   m_obstructionLayer: -1
   m_player: {fileID: 1024701356}
   activeController: 0
-  trackingSpace: {fileID: 1024701349}
-  linePointer: {fileID: 968570277}
-  gazePointer: {fileID: 0}
-  rayDrawDistance: 25
-  gazeDrawDistance: 3
-  showRayPointer: 0
 --- !u!120 &968570277
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -2200,12 +2189,6 @@ MonoBehaviour:
   m_obstructionLayer: -1
   m_player: {fileID: 1742700593}
   activeController: 0
-  trackingSpace: {fileID: 1742700585}
-  linePointer: {fileID: 981469978}
-  gazePointer: {fileID: 0}
-  rayDrawDistance: 20
-  gazeDrawDistance: 3
-  showRayPointer: 1
 --- !u!135 &981469980
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2247,6 +2230,10 @@ PrefabInstance:
       value: OVRPlayerController
       objectReference: {fileID: 0}
     - target: {fileID: 100008, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 100012, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
@@ -2323,10 +2310,6 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 100014, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 100012, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
@@ -2471,12 +2454,6 @@ MonoBehaviour:
   m_obstructionLayer: -1
   m_player: {fileID: 1024701356}
   activeController: 0
-  trackingSpace: {fileID: 1024701349}
-  linePointer: {fileID: 1024701358}
-  gazePointer: {fileID: 0}
-  rayDrawDistance: 25
-  gazeDrawDistance: 3
-  showRayPointer: 0
 --- !u!120 &1024701358
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -2633,12 +2610,6 @@ MonoBehaviour:
   m_obstructionLayer: -1
   m_player: {fileID: 1024701356}
   activeController: 0
-  trackingSpace: {fileID: 1024701349}
-  linePointer: {fileID: 1024701362}
-  gazePointer: {fileID: 0}
-  rayDrawDistance: 25
-  gazeDrawDistance: 3
-  showRayPointer: 0
 --- !u!120 &1024701362
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -2994,12 +2965,6 @@ MonoBehaviour:
   m_obstructionLayer: -1
   m_player: {fileID: 1024701356}
   activeController: 0
-  trackingSpace: {fileID: 1024701349}
-  linePointer: {fileID: 1135096978}
-  gazePointer: {fileID: 0}
-  rayDrawDistance: 25
-  gazeDrawDistance: 3
-  showRayPointer: 0
 --- !u!120 &1135096978
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -3217,7 +3182,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1184339516}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 02d61468f8b77ae4b92c344bc9a600fb, type: 3}
   m_Name: 
@@ -3665,6 +3630,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 100012, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -3734,10 +3703,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 100014, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 100012, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
@@ -4474,6 +4439,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 100012, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4550,10 +4519,6 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 100012, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 168962, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: m_Layer
       value: 0
@@ -4590,10 +4555,6 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Hand
       objectReference: {fileID: 0}
-    - target: {fileID: 2015248, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
-      propertyPath: field of view
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 1125068011842588, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: m_Layer
       value: 0
@@ -4601,6 +4562,10 @@ PrefabInstance:
     - target: {fileID: 1125068011842588, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: m_TagString
       value: Hand
+      objectReference: {fileID: 0}
+    - target: {fileID: 2015248, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
+      propertyPath: field of view
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
@@ -4701,12 +4666,6 @@ MonoBehaviour:
   m_obstructionLayer: -1
   m_player: {fileID: 1742700593}
   activeController: 0
-  trackingSpace: {fileID: 1742700585}
-  linePointer: {fileID: 1742700595}
-  gazePointer: {fileID: 0}
-  rayDrawDistance: 20
-  gazeDrawDistance: 3
-  showRayPointer: 1
 --- !u!120 &1742700595
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -4863,12 +4822,6 @@ MonoBehaviour:
   m_obstructionLayer: -1
   m_player: {fileID: 1742700593}
   activeController: 0
-  trackingSpace: {fileID: 1742700585}
-  linePointer: {fileID: 1742700599}
-  gazePointer: {fileID: 0}
-  rayDrawDistance: 20
-  gazeDrawDistance: 3
-  showRayPointer: 1
 --- !u!120 &1742700599
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -5681,12 +5634,6 @@ MonoBehaviour:
   m_obstructionLayer: -1
   m_player: {fileID: 1742700593}
   activeController: 0
-  trackingSpace: {fileID: 1742700585}
-  linePointer: {fileID: 1988046471}
-  gazePointer: {fileID: 0}
-  rayDrawDistance: 20
-  gazeDrawDistance: 3
-  showRayPointer: 1
 --- !u!135 &1988046473
 SphereCollider:
   m_ObjectHideFlags: 0
