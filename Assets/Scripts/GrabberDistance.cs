@@ -23,7 +23,7 @@ namespace OculusSampleFramework
 
 
 
-      /*  [Header("(Optional) Tracking space")]
+       [Header("(Optional) Tracking space")]
         [Tooltip("Tracking space of the OVRCameraRig.\nIf tracking space is not set, the scene will be searched.\nThis search is expensive.")]
         public Transform trackingSpace = null;
         [Header("Visual Elements")]
@@ -36,12 +36,12 @@ namespace OculusSampleFramework
         [Tooltip("How far away the gaze pointer should be from the camera.")]
         public float gazeDrawDistance = 3;
         [Tooltip("Show gaze pointer as ray pointer.")]
-        public bool showRayPointer = true;*/
+        public bool showRayPointer = true;
 
         // Start ray draw distance
         private const float StartRayDrawDistance = 0.032f;
 
-        //function from ovrpointervisualiser
+        
         private RaycastHit hit;
 
         public RaycastHit Hit
@@ -74,7 +74,6 @@ namespace OculusSampleFramework
                 gazePointer.position = ray.origin + ray.direction * (showRayPointer ? hitRayDrawDistance : gazeDrawDistance);
             }
         }
-        //function from ovrpointervisualiser
         public void SetPointerVisibility()
         {
             if (trackingSpace != null && activeController != OVRInput.Controller.None)
@@ -137,7 +136,7 @@ namespace OculusSampleFramework
             Debug.Assert(m_otherHand2 != null);
         }
 
-        // Update is called once per frame
+ 
         void Update()
         {
             DistanceGrabbable target;
