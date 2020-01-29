@@ -10,6 +10,7 @@ public class CatFollowBall : MonoBehaviour
     [SerializeField] private AudioClip catMeowSound;
     private AudioSource catSource;
     private DistanceGrabbable dg;
+    private OVRGrabbable ovrdg;
     private Animator anim;
     // Start is called before the first frame update
     void Start()
@@ -17,13 +18,14 @@ public class CatFollowBall : MonoBehaviour
         havebeentaken = false;
         catSource = GetComponent<AudioSource>();
         dg = ball.GetComponent<DistanceGrabbable>();
+        ovrdg= ball.GetComponent<OVRGrabbable>();
         anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!havebeentaken && dg.isGrabbed) //mettre distance grabbable
+        if (!havebeentaken && (dg.isGrabbed|| ovrdg.isGrabbed) ) //mettre distance grabbable
         {
             transform.LookAt(ball.transform);
             transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0);
@@ -32,7 +34,7 @@ public class CatFollowBall : MonoBehaviour
         }
         float dist = Vector3.Distance(transform.position, ball.transform.position);
         
-        if (havebeentaken && !dg.isGrabbed) //mettre distance grabbable
+        if (havebeentaken && !dg.isGrabbed && !ovrdg.isGrabbed ) //mettre distance grabbable
         {
             if (dist > 1f)
             {

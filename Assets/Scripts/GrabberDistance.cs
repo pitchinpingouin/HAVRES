@@ -41,7 +41,12 @@ namespace OculusSampleFramework
         // Start ray draw distance
         private const float StartRayDrawDistance = 0.032f;
 
-        
+        Collider targetColl2;
+        DistanceGrabbable target2;
+
+       
+
+
         private RaycastHit hit;
 
         public RaycastHit Hit
@@ -125,6 +130,7 @@ namespace OculusSampleFramework
         protected override void Start()
         {
             base.Start();
+          
             SphereCollider sc = m_player2.GetComponentInChildren<SphereCollider>();
             m_maxGrabDistance2 = sc.radius + 3.0f;
 
@@ -134,32 +140,101 @@ namespace OculusSampleFramework
                 if (grabbers[i] != this) m_otherHand2 = grabbers[i];
             }
             Debug.Assert(m_otherHand2 != null);
+            targetColl2 = null;
+            target2 = null;
         }
 
  
         void Update()
         {
+          
+
             DistanceGrabbable target;
             Collider targetColl;
             FindTargetWithRay(out target, out targetColl);
-
-            if (target != m_target)
+            if (target2 == null)
             {
-                if (m_target != null)
+
+                if (target != m_target)
                 {
-                    m_target.Targeted = m_otherHand2.m_target == m_target;
-                }
-                if (m_target != null)
-                    m_target.ClearColor();
-                if (target != null)
-                    target.SetColor(m_focusColor);
-                m_target = target;
-                m_targetCollider = targetColl;
-                if (m_target != null)
-                {
-                    m_target.Targeted = true;
+                    if (m_target != null)
+                    {
+                        m_target.Targeted = m_otherHand2.m_target == m_target;
+                    }
+                    if (m_target != null)
+                        m_target.ClearColor();
+                    if (target != null)
+                        target.SetColor(m_focusColor);
+                    m_target = target;
+                    m_targetCollider = targetColl;
+                    if (m_target != null)
+                    {
+                        m_target.Targeted = true;
+                    }
                 }
             }
+            else
+            {
+                if (target2 != m_target)
+                {
+                    if (m_target != null)
+                    {
+                        m_target.Targeted = m_otherHand2.m_target == m_target;
+                    }
+                    if (m_target != null)
+                        m_target.ClearColor();
+                    if (target2 != null)
+                        target2.SetColor(m_focusColor);
+                    m_target = target2;
+                    m_targetCollider = targetColl2;
+                    if (m_target != null)
+                    {
+                        m_target.Targeted = true;
+                    }
+                }
+
+            }
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.layer == 10 &&
+                (OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.LTouch) > 0.35 ||
+               OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.RTouch) > 0.35))
+            {
+                targetColl2 = other;
+                target2 = other.GetComponent<DistanceGrabbable>();
+            }
+
+            else
+            {
+                targetColl2 = null;
+                target2 = null;
+            }
+        }
+
+        private void OnTriggerStay(Collider other)
+        {
+            if (other.gameObject.layer == 10 && 
+                (OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.LTouch)>0.35 ||
+               OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.RTouch) > 0.35))
+            {
+                targetColl2 = other;
+                target2 = other.GetComponent<DistanceGrabbable>();
+            }
+
+            else
+            {
+                targetColl2 = null;
+                target2 = null;
+            }
+        }
+        private void OnTriggerExit(Collider other)
+        {
+            targetColl2 = null;
+            target2 = null;
         }
     }
+
+    
 }
