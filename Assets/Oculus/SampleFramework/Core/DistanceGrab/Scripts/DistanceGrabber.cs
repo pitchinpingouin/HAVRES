@@ -79,7 +79,13 @@ namespace OculusSampleFramework
         protected Collider m_targetCollider;
 
 
-        // elements from OVRPointerVisualizer
+     
+        [HideInInspector]
+        public OVRInput.Controller activeController = OVRInput.Controller.None;
+
+
+
+
         [Header("(Optional) Tracking space")]
         [Tooltip("Tracking space of the OVRCameraRig.\nIf tracking space is not set, the scene will be searched.\nThis search is expensive.")]
         public Transform trackingSpace = null;
@@ -94,56 +100,23 @@ namespace OculusSampleFramework
         public float gazeDrawDistance = 3;
         [Tooltip("Show gaze pointer as ray pointer.")]
         public bool showRayPointer = true;
-
-        // Start ray draw distance
         private const float StartRayDrawDistance = 0.032f;
 
-        [HideInInspector]
-        public OVRInput.Controller activeController = OVRInput.Controller.None;
-
-       
-
-
-
-
-
-
-        protected override void Start()
-        {
-            base.Start();
-
-            // Set up our max grab distance to be based on the player's max grab distance.
-            // Adding a liberal margin of error here, because users can move away some from the 
-            // OVRPlayerController, and also players have arms.
-            // Note that there's no major downside to making this value too high, as objects
-            // outside the player's grabbable trigger volume will not be eligible targets regardless.
-            SphereCollider sc = m_player.GetComponentInChildren<SphereCollider>();
-            m_maxGrabDistance = sc.radius + 3.0f;
-
-            if(m_parentHeldObject == true)
-            {
-                Debug.LogError("m_parentHeldObject incompatible with DistanceGrabber. Setting to false.");
-                m_parentHeldObject = false;
-            }
-
-            DistanceGrabber[] grabbers = FindObjectsOfType<DistanceGrabber>();
-            for (int i = 0; i < grabbers.Length; ++i)
-            {
-                if (grabbers[i] != this) m_otherHand = grabbers[i];
-            }
-            Debug.Assert(m_otherHand != null);
-
-#if UNITY_EDITOR
-            OVRPlugin.SendEvent("distance_grabber", (SceneManager.GetActiveScene().name == "DistanceGrab").ToString(), "sample_framework");
-#endif
-    }
-
         //function from ovrpointervisualiser
+        private RaycastHit hit;
+
+        public RaycastHit Hit
+        {
+            get
+            {
+                return this.hit;
+            }
+
+        }
 
         public void SetPointer(Ray ray)
         {
             float hitRayDrawDistance = rayDrawDistance;
-            RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
                 hitRayDrawDistance = hit.distance;
@@ -151,6 +124,8 @@ namespace OculusSampleFramework
 
             if (linePointer != null)
             {
+
+
                 linePointer.SetPosition(0, ray.origin + ray.direction * StartRayDrawDistance);
                 linePointer.SetPosition(1, ray.origin + ray.direction * hitRayDrawDistance);
             }
@@ -187,21 +162,72 @@ namespace OculusSampleFramework
             }
         }
 
+
+
+        protected bool FindTargetWithRay(out DistanceGrabbable dgOut, out Collider collOut)
+        {
+            dgOut = null;
+            collOut = null;
+            activeController = OVRInputHelpers.GetControllerForButton(OVRInput.Button.PrimaryIndexTrigger, activeController);
+            Ray selectionRay = OVRInputHelpers.GetSelectionRay(activeController, trackingSpace);
+            SetPointerVisibility();
+            SetPointer(selectionRay);
+            RaycastHit hit;
+            if (Physics.Raycast(selectionRay, out hit, m_maxGrabDistance, 1 << 10))
+            {
+
+                collOut = hit.collider;
+                dgOut = hit.collider.gameObject.GetComponent<DistanceGrabbable>();
+            }
+
+
+            return dgOut != null;
+        }
+
+
+
+
+
+
+        protected override void Start()
+        {
+            base.Start();
+
+            // Set up our max grab distance to be based on the player's max grab distance.
+            // Adding a liberal margin of error here, because users can move away some from the 
+            // OVRPlayerController, and also players have arms.
+            // Note that there's no major downside to making this value too high, as objects
+            // outside the player's grabbable trigger volume will not be eligible targets regardless.
+            SphereCollider sc = m_player.GetComponentInChildren<SphereCollider>();
+            m_maxGrabDistance = sc.radius + 3.0f;
+
+            if(m_parentHeldObject == true)
+            {
+                Debug.LogError("m_parentHeldObject incompatible with DistanceGrabber. Setting to false.");
+                m_parentHeldObject = false;
+            }
+
+            DistanceGrabber[] grabbers = FindObjectsOfType<DistanceGrabber>();
+            for (int i = 0; i < grabbers.Length; ++i)
+            {
+                if (grabbers[i] != this) m_otherHand = grabbers[i];
+            }
+            Debug.Assert(m_otherHand != null);
+
+#if UNITY_EDITOR
+            OVRPlugin.SendEvent("distance_grabber", (SceneManager.GetActiveScene().name == "DistanceGrab").ToString(), "sample_framework");
+#endif
+    }
+
+
+
         void Update()
         {
 
-            //Debug.DrawRay(transform.position, transform.forward, Color.red, 0.1f);
-
-            //lines from ovrpointervisualiser
-
-           /* activeController = OVRInputHelpers.GetControllerForButton(OVRInput.Button.PrimaryIndexTrigger, activeController);
-            Ray selectionRay = OVRInputHelpers.GetSelectionRay(activeController, trackingSpace);
-            SetPointerVisibility();
-            SetPointer(selectionRay);*/
-
+           
             DistanceGrabbable target;
             Collider targetColl;
-            FindTarget(out target, out targetColl);
+            FindTargetWithRay(out target, out targetColl);
 
             if (target != m_target)
             {
@@ -320,7 +346,7 @@ namespace OculusSampleFramework
             dgOut = null;
             collOut = null;
             float closestMagSq = float.MaxValue;
-            /*
+            
             // First test for objects within the grab volume, if we're using those.
             // (Some usage of DistanceGrabber will not use grab volumes, and will only 
             // use spherecasts, and that's supported.)
@@ -330,10 +356,7 @@ namespace OculusSampleFramework
                 bool canGrab = grabbable != null && grabbable.InRange && !(grabbable.isGrabbed && !grabbable.allowOffhandGrab);
                 if (!canGrab)
                 {
-                   activeController = OVRInputHelpers.GetControllerForButton(OVRInput.Button.PrimaryIndexTrigger, activeController);
-                    Ray selectionRay = OVRInputHelpers.GetSelectionRay(activeController, trackingSpace);
-                    SetPointerVisibility();
-                    SetPointer(selectionRay);
+                   
                     continue;
                 }
 
@@ -388,23 +411,11 @@ namespace OculusSampleFramework
             {
                 return FindTargetWithSpherecast(out dgOut, out collOut);
             }
-            return dgOut != null;*/
+            return dgOut != null;
 
-            activeController = OVRInputHelpers.GetControllerForButton(OVRInput.Button.PrimaryIndexTrigger, activeController);
-            Ray selectionRay = OVRInputHelpers.GetSelectionRay(activeController, trackingSpace);
-            SetPointerVisibility();
-            SetPointer(selectionRay);
-            RaycastHit hit; 
-            if (Physics.Raycast(selectionRay, out hit, m_maxGrabDistance,1 << 10))
-            {
-                
-                collOut = hit.collider;
-                dgOut = hit.collider.gameObject.GetComponent<DistanceGrabbable>();
-            }
-
-
-                return dgOut != null;
         }
+
+     
 
         protected bool FindTargetWithSpherecast(out DistanceGrabbable dgOut, out Collider collOut)
         {
