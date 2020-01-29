@@ -43,4 +43,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7feb8df4428792438a4e540cf1b8835, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvaParam: {fileID: 0}
+  menuZone: {fileID: 0}
+  OVRPlayerTransform: {fileID: 0}
