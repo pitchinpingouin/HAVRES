@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 8883205813556017679}
   - component: {fileID: 8883205813556017678}
   - component: {fileID: 4582790837822228525}
-  - component: {fileID: 8883205813556017677}
   - component: {fileID: 8883205814121441369}
+  - component: {fileID: 8847045676809389744}
   m_Layer: 10
   m_Name: woodlog
   m_TagString: Untagged
@@ -31,7 +31,7 @@ Transform:
   m_LocalRotation: {x: -0.0000000011131194, y: -0.99990666, z: 0.000000081452825,
     w: -0.013664606}
   m_LocalPosition: {x: 0.54, y: -0.17800002, z: -2.142}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalScale: {x: 20, y: 20, z: 20}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -100,20 +100,6 @@ MonoBehaviour:
   m_snapOffset: {fileID: 0}
   m_grabPoints: []
   m_materialColorField: _OutlineColor
---- !u!64 &8883205813556017677
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8883205813556017676}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 2534964839176971238, guid: 9616955b820209c47ab09802f129216d, type: 3}
 --- !u!54 &8883205814121441369
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -130,3 +116,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!64 &8847045676809389744
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8883205813556017676}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 2534964839176971238, guid: 9616955b820209c47ab09802f129216d, type: 3}

@@ -19,7 +19,7 @@ public class CatSound : MonoBehaviour
 
     private float timerMax;
 
-    public AudioClip hapticsAudioClip;
+    //public AudioClip hapticsAudioClip;
 
     private OVRHapticsClip hapticsClip;
 
@@ -38,7 +38,7 @@ public class CatSound : MonoBehaviour
         rightTouching = false;
         timer = 0.0f;
         timerMax = 2f;
-        hapticsClip = new OVRHapticsClip(hapticsAudioClip);
+        //hapticsClip = new OVRHapticsClip(hapticsAudioClip);
         //InitializeOVRHaptics();
         //Vibrate();
     }

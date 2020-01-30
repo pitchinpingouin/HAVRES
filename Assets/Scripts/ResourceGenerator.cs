@@ -17,14 +17,13 @@ using UnityEngine;
 public class ResourceGenerator : MonoBehaviour
 {
     public List<GameObject> resources;
-    private Collider trigger;
+    public Collider trigger;
     private GameObject instance;
     
     void Start()
     {
         if (resources.Count == 0) Debug.LogError("No resource set in resource generator ! Check all resource generators in scene");
         Random.InitState((int) System.DateTimeOffset.Now.ToUnixTimeSeconds()); // we use time since Epoch as a seed for the RNG
-        trigger = GetComponent<BoxCollider>();
         Generate(); // we need at least one item to be grabbable in order to detect when the player grabs it
     }
 
@@ -34,9 +33,9 @@ public class ResourceGenerator : MonoBehaviour
         {
             
             // Re-enable physics
-            Rigidbody rgbd = instance.GetComponent<Rigidbody>();
-            rgbd.isKinematic = false;
-            rgbd.useGravity = true;
+            //Rigidbody rgbd = instance.GetComponent<Rigidbody>();
+            //rgbd.isKinematic = false;
+            //rgbd.useGravity = true;
 
             instance = null;
 
@@ -50,8 +49,8 @@ public class ResourceGenerator : MonoBehaviour
         if (instance != null) return;
         instance = Instantiate(resources[index], trigger.bounds.center, Quaternion.identity);
         // Disable physics
-        Rigidbody rgbd = instance.GetComponent<Rigidbody>();
-        rgbd.isKinematic = true;
-        rgbd.useGravity = false;
+        //Rigidbody rgbd = instance.GetComponent<Rigidbody>();
+        //rgbd.isKinematic = true;
+        //rgbd.useGravity = false;
     }
 }
