@@ -7,6 +7,9 @@ public class OnTriggerGrabbable : MonoBehaviour
     private List<Collider> colliders = new List<Collider>();
     private List<Vector3> massDragAngulardrag = new List<Vector3>();
 
+    public GameObject meshCombinerEmpty;
+    private MeshCombiner meshCombinerScript;
+
     private void OnEnable()
     {
         //Reset the list of collided objects
@@ -15,7 +18,6 @@ public class OnTriggerGrabbable : MonoBehaviour
             colliders.Clear();
             massDragAngulardrag.Clear();
         }
-        
 
     }
 
@@ -57,7 +59,6 @@ public class OnTriggerGrabbable : MonoBehaviour
                 Rigidbody rgdb = colliderExiting.GetComponent<Rigidbody>();
                 int index = colliders.IndexOf(colliderExiting);
 
-
                 //Reset the parameters of the rgbd
                 rgdb.mass = massDragAngulardrag[index].x;
                 rgdb.drag = massDragAngulardrag[index].y;
@@ -65,11 +66,6 @@ public class OnTriggerGrabbable : MonoBehaviour
 
                 rgdb.useGravity = true;
                 rgdb.isKinematic = false;
-
-
-                //Reset detection of collisions
-                ///rgdb.detectCollisions = true;
-                ///
 
                 //Remove object from lists
                 massDragAngulardrag.RemoveAt(index);
@@ -82,7 +78,45 @@ public class OnTriggerGrabbable : MonoBehaviour
     {
         if(colliders.Count > 0)
         {
-            //Combine Meshes
+            GameObject empty = Instantiate(meshCombinerEmpty);
+            empty.transform.position = transform.position;
+            meshCombinerScript = empty.GetComponent<MeshCombiner>();
+
+            //Set up the mesh combiner
+            ///TODO
+            ///
+            
+            //Mettre les objets en enfant de l'empty
+            for(int i = 0; i < colliders.Count; i++)
+            {
+                colliders[i].transform.parent = empty.transform;
+            }
+
+            //Combine meshes and add mass
+            meshCombinerScript.CombineMeshes(false);
+            CalculateTotalMassAndAddRgbd(empty);
+            
+            //Empty the two lists, and reassign the new rigidbody parameters like gravity
+            ///TODO
+            ///
+
+            //Sinon, ca sera vidé au Enable donc osef
         }
+    }
+
+    private void CalculateTotalMassAndAddRgbd(GameObject emptyGameObject)
+    {
+        float totalMass = 0.0f;
+        //On additionne toutes les masses dans un seul float
+        for (int i = 0; i < massDragAngulardrag.Count - 1; i++)
+        {
+            totalMass += massDragAngulardrag[i].x;
+        }
+
+        //Add Rigidbody to the emptyGameObject
+        emptyGameObject.AddComponent<Rigidbody>();
+        emptyGameObject.GetComponent<Rigidbody>().mass = totalMass;
+        
+        return;
     }
 }

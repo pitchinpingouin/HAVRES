@@ -9,7 +9,7 @@ public class Teleporter : MonoBehaviour
     public GameObject TeleportMark;
     public Transform Player;
     private Transform OVRPlayerTransform;
-    public float RayLengtht = 50f;
+    private float RayLengtht = 50f;
 
     private Vector3 initialRelativePosition;
 

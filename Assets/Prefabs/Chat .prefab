@@ -720,7 +720,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d939223fae3a9a84fa809c93b75e17e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  catRonronSound: {fileID: 8300000, guid: c46b85597d69dc14887b59a32a78a6fe, type: 3}
+  catRonronSound: {fileID: 8300000, guid: 4c90add913dd91f449ccc0697f392033, type: 3}
   hapticsAudioClip: {fileID: 0}
 --- !u!114 &64172458224395169
 MonoBehaviour:
@@ -1402,6 +1402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6a870d8b18370e4bb44b5f8989ca973, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BrushSound: {fileID: 0}
 --- !u!54 &185416856525845476
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -29,9 +29,7 @@ public class ButtonStayTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        
         isTrigger = !isTrigger;
-        
     }
     private void OnTriggerStay(Collider other)
     {
