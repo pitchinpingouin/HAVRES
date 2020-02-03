@@ -9,8 +9,12 @@ public class GameManager : MonoBehaviour
     public GameObject treePrefabState2;
     public GameObject treePrefabState3;
 
+    public List<GameObject> rockPrefabs;
+
     public double saveInterval;
     private Timer saveTimer;
+
+    private long nextRockId = 0;
 
     private void Awake()
     {
@@ -18,29 +22,27 @@ public class GameManager : MonoBehaviour
         foreach (TreeData tree in data.Trees)
         {
             GameObject treePrefab;
-            //float yOffset;
             tree.State++;
             switch (tree.State)
             {
                 case 1:
                     treePrefab = treePrefabState1;
-                    //yOffset = 0.0f;
                     break;
                 case 2:
                     treePrefab = treePrefabState2;
-                    //yOffset = 0.5f;
-                    break;
-                case 3:
-                    treePrefab = treePrefabState3;
-                    //yOffset = 1.5f;
                     break;
                 default:
                     treePrefab = treePrefabState3;
-                    //yOffset = 0.0f;
                     break;
             }
 
-            Instantiate(treePrefab, new Vector3(tree.X, tree.Y /*+ yOffset*/, tree.Z), Quaternion.identity);
+            GameObject instance = Instantiate(treePrefab, new Vector3(tree.X, tree.Y, tree.Z), Quaternion.identity);
+            instance.GetComponent<TreeAvatar>().State = tree.State;
+        }
+
+        foreach (RockData rock in data.Rocks)
+        {
+            Instantiate(rockPrefabs[rock.RockNumber - 1], new Vector3(rock.X, rock.Y, rock.Z), Quaternion.identity);
         }
     }
 
@@ -55,12 +57,19 @@ public class GameManager : MonoBehaviour
     private static void SaveProgression(object source, ElapsedEventArgs e)
     {
         Debug.Log("Saving " + SaveSystem.Data.Trees.Count + " trees");
+        Debug.Log("Saving " + SaveSystem.Data.Rocks.Count + " rocks");
         SaveSystem.Save();
-
     }
 
     private void OnApplicationQuit()
     {
         saveTimer.Dispose();
+    }
+
+    public long GiveRockId()
+    {
+        long returnValue = nextRockId;
+        nextRockId++;
+        return returnValue;
     }
 }

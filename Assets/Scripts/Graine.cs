@@ -9,6 +9,7 @@ public class Graine : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField]
     private GameObject Arbre;
+    [SerializeField]
     private bool havebeentaken;
   
 

@@ -49,4 +49,16 @@ MonoBehaviour:
     type: 3}
   treePrefabState3: {fileID: 9066006180887872116, guid: defaedf4bd5482a40a289a177851eeb2,
     type: 3}
+  rockPrefabs:
+  - {fileID: 2768148742850350578, guid: aaca4548b1a91bc4885582b53aa4022f, type: 3}
+  - {fileID: 6166516868856134275, guid: 1d7cf80ff985b3d4da86a46d77ed1a1e, type: 3}
+  - {fileID: 6515870566422213333, guid: a9b2c2ea8472caa40b47a88cf3badc04, type: 3}
+  - {fileID: 8558049811416537875, guid: a60a8f0bf6c2c2e43959578425ce1015, type: 3}
+  - {fileID: 4997182953392906419, guid: 345663e86a7f60545b8ec4a8ef734d07, type: 3}
+  - {fileID: 5970574431707297597, guid: d052e3fbbc0929a408e720b491187572, type: 3}
+  - {fileID: 7069524600864037565, guid: 40cdb1261502c5147946ac48cebac02b, type: 3}
+  - {fileID: 8407849944717940717, guid: f0b038078591d7441bbc6586bbc421d2, type: 3}
+  - {fileID: 5724151902612730782, guid: 087932bfd0e7db149b7e604943e47caf, type: 3}
+  - {fileID: 7695814696031743420, guid: 2934d248fbf71ae43908c5dba87ac6e5, type: 3}
+  - {fileID: 8354401053766724436, guid: 5f392814e5dcb6a45b0380e07be63338, type: 3}
   saveInterval: 10

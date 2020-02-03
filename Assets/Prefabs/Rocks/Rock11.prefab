@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8354401053760423412}
   - component: {fileID: -4366558084515462454}
   - component: {fileID: 4620342416647546180}
+  - component: {fileID: -1951493881847501118}
   m_Layer: 10
   m_Name: Rock11
   m_TagString: Untagged
@@ -129,3 +130,16 @@ MonoBehaviour:
   m_snapOffset: {fileID: 0}
   m_grabPoints: []
   m_materialColorField: _OutlineColor
+--- !u!114 &-1951493881847501118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8354401053766724436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76045e7df6277c5478da2b1251d5a2c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RockNumber: 11

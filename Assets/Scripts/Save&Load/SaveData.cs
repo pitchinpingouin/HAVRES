@@ -10,4 +10,7 @@ public class SaveData
     [XmlArray("Trees")]
     [XmlArrayItem("Tree")]
     public List<TreeData> Trees = new List<TreeData>();
+    [XmlArray("Rocks")]
+    [XmlArrayItem("Rock")]
+    public List<RockData> Rocks = new List<RockData>();
 }

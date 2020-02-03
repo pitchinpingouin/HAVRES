@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tree : MonoBehaviour
+public class TreeAvatar : MonoBehaviour
 {
     public int State;
 
@@ -20,8 +20,12 @@ public class Tree : MonoBehaviour
 
         if (State > 3)
         {
-            SaveSystem.Data.Trees.Remove(treeData);
-            return;
+            if (!SaveSystem.Data.Trees.Exists(tree => tree.X == treeData.X && tree.Z == treeData.Z))
+                Debug.LogError("Cannot remove tree! Tree doesn't exist in the saveData");
+
+            TreeData alreadySavedData = SaveSystem.Data.Trees.Find(tree => (tree.X == treeData.X && tree.Z == treeData.Z));
+
+            SaveSystem.Data.Trees.Remove(alreadySavedData);
         }
         else if (!SaveSystem.Data.Trees.Exists(tree => tree.X == treeData.X && tree.Z == treeData.Z))
         {
@@ -31,7 +35,7 @@ public class Tree : MonoBehaviour
         {
             TreeData alreadySavedData = SaveSystem.Data.Trees.Find(tree => (tree.X == treeData.X && tree.Z == treeData.Z));
             alreadySavedData.State = treeData.State;
-            alreadySavedData.Y = treeData.Y;
+            //alreadySavedData.Y = treeData.Y;
         }
     }
 
