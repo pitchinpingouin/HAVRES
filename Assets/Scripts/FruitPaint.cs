@@ -38,11 +38,14 @@ public class FruitPaint : MonoBehaviour
         {
             if (Physics.Raycast(transform.position + new Vector3(0,0,0.35f), transform.TransformDirection(Vector3.forward), out hit, 0.5f,layerMask) && refreshPaint == 10)
             {
-                Quaternion rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
-                Vector3 contactpt = hit.point;
-                GameObject stain = Instantiate(tache, new Vector3(contactpt.x, contactpt.y + 0.01f/*-0.15f*//*+ 0.05f*/, contactpt.z), rotation);
-                stain.transform.localScale = tache.transform.localScale * 0.6f;
-                refreshPaint = 0;
+                if (hit.transform.gameObject.CompareTag("Ground"))
+                {
+                    Quaternion rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
+                    Vector3 contactpt = hit.point;
+                    GameObject stain = Instantiate(tache, new Vector3(contactpt.x, contactpt.y + 0.01f/*-0.15f*//*+ 0.05f*/, contactpt.z), rotation);
+                    stain.transform.localScale = tache.transform.localScale * 0.6f;
+                    refreshPaint = 0;
+                }
             }
         }
     }
