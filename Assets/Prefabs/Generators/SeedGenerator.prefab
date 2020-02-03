@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7732769605641191416}
   - component: {fileID: 7732769605641191419}
   - component: {fileID: 1404320508}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SeedGenerator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
