@@ -81,7 +81,7 @@ public class OnTriggerGrabbable : MonoBehaviour
             meshCombinerScript = empty.GetComponent<MeshCombiner>();
 
             //Set up the mesh combiner's booleans
-            meshCombinerScript.DeactivateCombinedChildren = true;
+            meshCombinerScript.DeactivateCombinedChildren = false;
             //meshCombinerScript.CreateMultiMaterialMesh = true;
             
             //Put each concerned object as a child of the new empty
@@ -105,6 +105,7 @@ public class OnTriggerGrabbable : MonoBehaviour
             //Empty the two lists, and reassign the new rigidbody parameters like gravity
             for (int i = 0; i < colliders.Count; i++)
             {
+                colliders[i].transform.parent = null;
                 colliders[i].GetComponent<Rigidbody>().mass = massDragAngulardrag[i].x;
                 colliders[i].GetComponent<Rigidbody>().drag = massDragAngulardrag[i].y;
                 colliders[i].GetComponent<Rigidbody>().angularDrag = massDragAngulardrag[i].z;

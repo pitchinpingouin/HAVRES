@@ -13,4 +13,10 @@ public class SaveData
     [XmlArray("Rocks")]
     [XmlArrayItem("Rock")]
     public List<RockData> Rocks = new List<RockData>();
+    [XmlArray("Logs")]
+    [XmlArrayItem("Log")]
+    public List<WoodLogData> WoodLogs = new List<WoodLogData>();
+    [XmlArray("Splashes")]
+    [XmlArrayItem("Splash")]
+    public List<FruitSplashData> Splashes = new List<FruitSplashData>();
 }

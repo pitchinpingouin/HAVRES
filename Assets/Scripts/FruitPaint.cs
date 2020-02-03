@@ -7,6 +7,7 @@ public class FruitPaint : MonoBehaviour
 {
     [SerializeField]
     private GameObject tache;
+    [SerializeField]
     private bool havebeentaken;
     private int refreshPaint;
    
@@ -44,6 +45,7 @@ public class FruitPaint : MonoBehaviour
                     Vector3 contactpt = hit.point;
                     GameObject stain = Instantiate(tache, new Vector3(contactpt.x, contactpt.y + 0.01f/*-0.15f*//*+ 0.05f*/, contactpt.z), rotation);
                     stain.transform.localScale = tache.transform.localScale * 0.6f;
+                    stain.GetComponent<SplashAvatar>().ttl = 4;
                     refreshPaint = 0;
                 }
             }
@@ -58,8 +60,8 @@ public class FruitPaint : MonoBehaviour
             ContactPoint contact = collision.contacts[0];
             Quaternion rotation = Quaternion.FromToRotation(Vector3.up, contact.normal);
             Vector3 contactpt = contact.point;
-            Instantiate(tache, new Vector3(contactpt.x, contactpt.y + 0.01f/*-0.15f*//*+ 0.05f*/, contactpt.z), rotation);
-
+            GameObject instance = Instantiate(tache, new Vector3(contactpt.x, contactpt.y + 0.01f/*-0.15f*//*+ 0.05f*/, contactpt.z), rotation);
+            instance.GetComponent<SplashAvatar>().ttl = 4;
 
            
 

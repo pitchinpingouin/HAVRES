@@ -8,8 +8,6 @@ public class TreeAvatar : MonoBehaviour
 
     private void Start()
     {
-        
-
         Vector3 pos = transform.position;
         TreeData treeData = new TreeData();
         treeData.State = this.State;

@@ -6,7 +6,7 @@ public class RockAvatar : MonoBehaviour
 {
     private long id = -1;
     public int RockNumber;
-    private float saveCooldown = 5.00f;
+    private float saveCooldown = 3.00f;
     private float saveTimer = 0.00f;
 
     private void Start()
@@ -52,5 +52,11 @@ public class RockAvatar : MonoBehaviour
         {
             saveTimer += Time.deltaTime;
         }
+    }
+
+    private void OnDestroy()
+    {
+        RockData alreadySavedData = SaveSystem.Data.Rocks.Find(rock => rock.id == id);
+        SaveSystem.Data.Rocks.Remove(alreadySavedData);
     }
 }
